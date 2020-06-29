@@ -1,0 +1,17 @@
+<div class="editor-options">
+  <button *ngFor="let t of editorOptions"
+    type="button" class="btn btn-secondary"
+    nbTooltip="{{t.title}}"
+    nbTooltipPlacement="bottom"
+    (click)="doAction(t)">
+    <i class="{{t.icon}}"></i>
+  </button>
+</div>
+
+<div class="editor-tools">
+  <button *ngFor="let t of editorTools"
+    type="button" class="btn btn-secondary"
+    (click)="openModal(t)">
+    {{t.title}}
+  </button>
+</div>

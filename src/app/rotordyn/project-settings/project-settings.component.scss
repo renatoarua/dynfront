@@ -1,0 +1,36 @@
+@import '../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/components/card/card.component.theme';
+@import '~@nebular/theme/styles/global/breakpoints';
+@import '~@nebular/theme/styles/core/mixins';
+
+@include nb-install-component() {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  .header {
+    @include nb-card-header();
+    border: unset;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    padding: 2rem;
+  }
+
+  .footer {
+    padding: nb-theme(card-padding);
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      min-width: 4rem;
+      margin-left: 5px;
+    }
+  }
+}

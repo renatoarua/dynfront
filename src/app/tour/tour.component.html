@@ -1,0 +1,107 @@
+<div class="projects-table">
+  <span id="step1">&nbsp;</span>
+  <div class="row card-deck">
+    <div class="col-sm-4">
+      <nb-card class="card-full-create-project effect padded">
+        <nb-card-header>Create New Project</nb-card-header>
+        <nb-card-body>
+          <i class="fa fa-plus-square" id="step2"></i>
+        </nb-card-body>
+        <nb-card-footer>&nbsp;</nb-card-footer>
+      </nb-card>
+    </div>
+    <div class="col-sm-4" *ngIf="_project">
+      <nb-reveal-card class="card-project">
+        <nb-card-front>
+          <nb-card>
+            <nb-card-header><i class="fa fa-clone"></i> Project Info</nb-card-header>
+            <nb-card-body>
+              <div class="name">
+                <span>{{_project.name}}</span>
+              </div>
+              <div class="idd">
+                <span>{{_project.projectId}}</span>
+              </div>
+              <div class="status">
+                <p>{{_project.status}}</p>
+                <span>status</span>
+              </div>
+              <div class="info-list">
+                <div class="info">
+                  <span class="caption">Len</span>
+                  <span class="value" *ngIf="_project.machine.sections.length > 0">{{+_project.machine.sections[_project.machine.sections.length-1].position | number:'1.2-2'}}</span>
+                  <span class="value" *ngIf="_project.machine.sections.length == 0"> --- </span>
+                </div>
+                <div class="info">
+                  <span class="caption">Disc</span>
+                  <span class="value">{{_project.machine.discs.length}}</span>
+                </div>
+                <div class="info">
+                  <span class="caption">Roll</span>
+                  <i class="ion-checkmark green" *ngIf="_project.projectsetting.systemoptions.rollerbearing"></i>
+                  <i class="ion-close-round red" *ngIf="!_project.projectsetting.systemoptions.rollerbearing"></i>
+                </div>
+                <div class="info">
+                  <span class="caption">Ves</span>
+                  <i class="ion-checkmark green" *ngIf="_project.projectsetting.systemoptions.ves"></i>
+                  <i class="ion-close-round red" *ngIf="!_project.projectsetting.systemoptions.ves"></i>
+                </div>
+              </div>
+            </nb-card-body>
+            <nb-card-footer>Options</nb-card-footer>
+          </nb-card>
+        </nb-card-front>
+        <nb-card-back>
+          <nb-card>
+            <nb-card-header>Options</nb-card-header>
+            <nb-card-body>
+              <div class="description">
+                <span>no description</span>
+              </div>
+              <div class="actions">
+                <button class="btn btn-secondary" type="button">View</button>
+                <button class="btn btn-secondary" type="button">Settings</button>
+                <button class="btn btn-secondary" type="button">Edit</button>
+              </div>
+            </nb-card-body>
+            <nb-card-footer>Info</nb-card-footer>
+          </nb-card>
+        </nb-card-back>
+      </nb-reveal-card>
+    </div>
+    <span id="step3">&nbsp;</span>
+    
+  </div>
+</div>
+
+<!-- start TOUR -->
+<!-- <button class="btn" (click)="startTour()"> START!</button> -->
+
+<!-- Each step could be placed at ANYWHERE -->
+
+<tour-step selector="step1" order="1" position="bottom" title="Projects...">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    There is no Projects yet... Let's create one to work with!
+  </div>
+</tour-step>
+
+
+<tour-step selector="step2" order="2" position="right" title="Create..." elementsDisabled="false">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    Click here to create an example project
+  </div>
+</tour-step>
+
+<tour-step selector="step3" order="3" position="bottom" title="Create..." elementsDisabled="false">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    This is a pre-configured project with some data. <br>
+    The actual creation is just a selection of options...<br>
+    Let's see inside the project... Click next...
+  </div>
+</tour-step>
+
+<!-- Bluring element insert on top of the page-->
+<tour-overlay></tour-overlay>

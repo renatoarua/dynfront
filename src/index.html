@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rotordyn</title>
+  <base href="./">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="assets/img/favicon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://js.braintreegateway.com/web/dropin/1.16.0/js/dropin.min.js"></script>
+  <!-- <link href="assets/css/simple-line-icons.css" rel="stylesheet"> -->
+
+</head>
+<body>
+  <app-root>Loading...</app-root>
+
+  <style>
+    .spinner { 
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:1003;
+      background:#2c3532;
+      overflow:hidden;
+      text-align: center;
+    }
+    .loader-gears {
+      /*background-color: rgba(63, 187, 176, .5);*/
+      display: inline-block;
+      position: relative;
+      width: 3em;
+      height: 3em;
+      top: calc(50% - 1.5em);
+      transform: scale(2);
+      overflow: hidden;
+      border-radius: .25em;
+      /*border: .1em solid #3fbbb0;*/
+      box-shadow: 
+        0 0 0 .1em #3fbbb0,
+        inset 0 0 0 3em rgba(63, 187, 176, .5);
+    }
+    .loader-gears:before, 
+    .loader-gears:after {
+      content: '';
+      z-index: 1;
+      display: block;
+      position: absolute;
+      width: 2.7em;
+      height: 2.7em;
+      border-radius: 50%;
+      border: .16em dashed #106466;
+      box-shadow: inset 0 0 0 .9em #106466;
+      -webkit-animation: gear-rotate infinite linear 3s forwards;
+      animation: gear-rotate infinite linear 3s forwards;
+    }
+      
+    .loader-gears:before {
+      left: -.7em;
+      top: 1.1em;
+    }
+    .loader-gears:after {
+      left: 1.15em;
+      top: -.85em;
+      animation-direction: reverse;
+    }
+
+    @-webkit-keyframes gear-rotate {
+      to {
+        -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+      }
+    }
+
+    @keyframes gear-rotate {
+      to {
+        -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+      }
+    }
+    @-webkit-keyframes gear-glow {
+      0%, 100% {
+        -webkit-filter: drop-shadow(0 0 0 rgba(63, 187, 176, 0));
+                filter: drop-shadow(0 0 0 rgba(63, 187, 176, 0));
+      }
+      60% {
+        -webkit-filter: drop-shadow(0 0 1.75em #3fbbb0);
+                filter: drop-shadow(0 0 1.75em #3fbbb0);
+      }
+    }
+    @keyframes gear-glow {
+      0%, 100% {
+        -webkit-filter: drop-shadow(0 0 0 rgba(63, 187, 176, 0));
+                filter: drop-shadow(0 0 0 rgba(63, 187, 176, 0));
+      }
+      60% {
+        -webkit-filter: drop-shadow(0 0 1.75em #3fbbb0);
+                filter: drop-shadow(0 0 1.75em #3fbbb0);
+      }
+    }
+  </style>
+  <noscript>
+    <h3 class="text-center">Javascript Required. Kindly enable Javascript.</h3>
+  </noscript>
+  <div id="nb-global-spinner" class="spinner">
+    <div class="loader-gears"></div>
+  </div>
+</body>
+</html>

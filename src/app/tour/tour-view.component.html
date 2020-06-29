@@ -1,0 +1,29 @@
+
+<!-- <button class="btn" (click)="startTour()"> START!</button> -->
+
+<tour-step selector="step1" order="1" position="bottom" title="Projects...">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    There is no Projects yet... Let's create one to work with!
+  </div>
+</tour-step>
+
+
+<tour-step selector="step2" order="2" position="right" title="Create..." elementsDisabled="false">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    Click here to create an example project
+  </div>
+</tour-step>
+
+<tour-step selector="step3" order="3" position="left" title="Create..." elementsDisabled="false">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    This is a pre-configured project with some data. <br>
+    The actual creation is just a selection of options...<br>
+    Let's see inside the project... Click next...
+  </div>
+</tour-step>
+
+<!-- Bluring element insert on top of the page-->
+<tour-overlay></tour-overlay>

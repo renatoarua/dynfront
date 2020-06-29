@@ -1,0 +1,14 @@
+<div class="terminal">
+	<p *ngFor="let line of dialogue" [ngClass]="{
+		'error':line.type == 'error',
+		'warning': line.type == 'warning',
+		'cmd':line.type == 'cmd',
+		'success':line.type == 'success'
+	}">
+		{{line.msg}} <!-- <a *ngIf="line.type == 'error'" (click)="fix(line.idx)">fix this</a> -->
+	</p>
+	<p class="new-line">
+		{{ display }}<span> _</span>
+	</p>
+</div>
+

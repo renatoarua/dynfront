@@ -1,0 +1,50 @@
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.initialSpin.invalid && data.controls.initialSpin.dirty}">
+            <!--initialSpin-->
+            <label for="initialSpin">Initial Spin Speed (rpm) <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="initialSpin" placeholder="Speed" formControlName="initialSpin">
+            <show-errors [control]="data.controls.initialSpin"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.finalSpin.invalid && data.controls.finalSpin.dirty}">
+            <!--finalSpin-->
+            <label for="finalSpin">Final Spin Speed (rpm) <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="finalSpin" placeholder="Speed" formControlName="finalSpin">
+            <show-errors [control]="data.controls.finalSpin"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.steps.invalid && data.controls.steps.dirty}">
+            <!--steps-->
+            <label for="steps">Number of Steps <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="steps" placeholder="Number of Steps" formControlName="steps">
+            <show-errors [control]="data.controls.steps"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.viscosity.invalid && data.controls.viscosity.dirty}">
+            <!-- viscosity -->
+            <label for="viscosity">Oil Viscosity (Pa.s) <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="viscosity" placeholder="Viscosity" formControlName="viscosity">
+            <show-errors [control]="data.controls.viscosity"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.diameter.invalid && data.controls.diameter.dirty}">
+            <!-- diameter -->
+            <label for="diameter" [innerHTML]="'Diameter ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="diameter" placeholder="Diameter" formControlName="diameter">
+            <show-errors [control]="data.controls.diameter"></show-errors>
+        </div>
+         <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.length.invalid && data.controls.length.dirty}">
+            <!--length-->
+            <label for="length" [innerHTML]="'Length ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="length" placeholder="Inertia length" formControlName="length">
+            <show-errors [control]="data.controls.length"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.radio.invalid && data.controls.radio.dirty}">
+            <!-- radio -->
+            <label for="radio" [innerHTML]="'Radio Clearence ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="radio" placeholder="Radio" formControlName="radio">
+            <show-errors [control]="data.controls.radio"></show-errors>
+        </div>
+    </div>
+</div>

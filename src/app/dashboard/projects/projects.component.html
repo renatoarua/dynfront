@@ -1,0 +1,93 @@
+<div class="row" *ngIf="_errorMessage">
+  <div class="col-sm-12">
+    <p class="alert alert-danger">{{_errorMessage}}</p>
+  </div>
+</div>
+<div class="animated fadeIn" *ngIf="!projects && !_errorMessage">
+  <spinner></spinner>
+</div>
+
+<div class="projects-table" *ngIf="projects">
+
+  <div class="row card-deck">
+    <div class="col-sm-4">
+      <nb-card (click)="createProject()" class="card-full-create-project effect padded">
+        <nb-card-header>Create New Project</nb-card-header>
+        <nb-card-body>
+          <i class="fa fa-plus-square"></i>
+        </nb-card-body>
+        <nb-card-footer>&nbsp;</nb-card-footer>
+      </nb-card>
+    </div>
+    <div class="col-sm-4" *ngFor="let project of projects">
+      <nb-reveal-card class="card-project">
+        <nb-card-front>
+          <nb-card>
+            <nb-card-header><i class="fa fa-clone"></i> Project Info</nb-card-header>
+            <nb-card-body>
+              <div class="name">
+                <span>{{project.name}}</span>
+              </div>
+              <div class="idd">
+                <span>{{project.projectId}}</span>
+              </div>
+              <div class="status">
+                <p>{{project.status}}</p>
+                <span>status</span>
+              </div>
+              <div class="info-list">
+                <div class="info">
+                  <span class="caption">Length</span>
+                  <span class="value" *ngIf="project.machine.sections.length > 0">{{+project.machine.sections[project.machine.sections.length-1].position | number:'1.2-2'}}</span>
+                  <span class="value" *ngIf="project.machine.sections.length == 0"> --- </span>
+                </div>
+                <div class="info">
+                  <span class="caption">Discs</span>
+                  <span class="value">{{project.machine.discs.length}}</span>
+                </div>
+                <div class="info">
+                  <span class="caption">Roller</span>
+                  <i class="ion-checkmark green" *ngIf="project.projectsetting.systemoptions.rollerbearing"></i>
+                  <i class="ion-close-round red" *ngIf="!project.projectsetting.systemoptions.rollerbearing"></i>
+                </div>
+                <div class="info">
+                  <span class="caption">Journal</span>
+                  <i class="ion-checkmark green" *ngIf="project.projectsetting.systemoptions.journalbearing"></i>
+                  <i class="ion-close-round red" *ngIf="!project.projectsetting.systemoptions.journalbearing"></i>
+                </div>
+                <!-- <div class="info">
+                  <span class="caption">Ves</span>
+                  <i class="ion-checkmark green" *ngIf="project.projectsetting.systemoptions.ves"></i>
+                  <i class="ion-close-round red" *ngIf="!project.projectsetting.systemoptions.ves"></i>
+                </div> -->
+              </div>
+            </nb-card-body>
+            <nb-card-footer></nb-card-footer>
+          </nb-card>
+        </nb-card-front>
+        <nb-card-back>
+          <nb-card>
+            <nb-card-header>Options</nb-card-header>
+            <nb-card-body>
+              <div class="description">
+                <span></span>
+              </div>
+              <div class="actions">
+                <button class="btn btn-secondary" type="button" (click)="selectProject(project, $event)">View</button>
+                <button class="btn btn-secondary" type="button" (click)="settingsProject(project, $event)">Settings</button>
+                <button class="btn btn-secondary" type="button" (click)="editProject(project, $event)">Edit</button>
+              </div>
+            </nb-card-body>
+            <nb-card-footer></nb-card-footer>
+          </nb-card>
+        </nb-card-back>
+      </nb-reveal-card>
+    </div>
+    
+  </div>
+
+  <!-- <project-list [projects]="_projects | async" (selected)="selectProject($event)" (edit)="editProject($event)" (run)="runProject($event)"></project-list> -->
+
+</div>
+
+<dyn-modal (onConfirm)="onSubmit()"></dyn-modal>

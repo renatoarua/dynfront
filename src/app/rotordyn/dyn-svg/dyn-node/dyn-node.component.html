@@ -1,0 +1,82 @@
+<div class="header">Element Info</div>
+
+<div class="body" *ngIf="!node">
+  <div class="name">
+    <span>No element selected</span>
+  </div>
+</div>
+
+<div class="body" *ngIf="node">
+
+  <div class="name">
+    <span>{{node.info.text}}</span><span> #{{node.groupId+1}}</span>
+  </div>
+  <div class="number">
+    <span>element #{{node.nodeId+1}}</span>
+  </div>
+
+  <div class="node-info">
+    <div class="info">
+      <!-- <div class="group">
+        <span>{{node.group}}</span>
+      </div>
+      <div class="big">
+        <span>#{{node.groupId+1}}</span>
+      </div> -->
+    </div>
+    <div class="details">
+      <div class="parameter">
+        <span class="parameter-name">pos</span>
+        <span class="parameter-value">{{position.toFixed(2)}}</span>
+      </div>
+      <div class="parameter">
+        <span class="parameter-name">len/thic</span>
+        <span class="parameter-value">{{length.toFixed(2)}}</span>
+      </div>
+      <div class="parameter">
+        <span class="parameter-name">diam</span>
+        <span class="parameter-value">{{diameter.toFixed(2)}}</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer" *ngIf="editing">
+  <div class="common-tools" *ngIf="!isSection && !isRibs">
+    <button class="btn btn-secondary" type="button" [disabled]="!node" (click)="editNode()" nbTooltip="Edit" nbTooltipPlacement="top">
+      <i class="fa fa-pencil"></i> 
+    </button>
+    <button class="btn btn-secondary" type="button" [disabled]="!node" (click)="duplicateNode()" nbTooltip="Duplicate" nbTooltipPlacement="top">
+      <i class="fa fa-clone"></i>
+    </button>
+    <button class="btn btn-secondary" type="button" [disabled]="!node" (click)="deleteNode()" nbTooltip="Delete" nbTooltipPlacement="top">
+      <i class="fa fa-trash"></i>
+    </button>
+  </div>
+
+  <div class="section-tools" *ngIf="isSection">
+    <button class="btn btn-secondary" type="button" [disabled]="!node" (click)="editNode()" nbTooltip="Edit" nbTooltipPlacement="top">
+      <i class="fa fa-pencil"></i> 
+    </button>
+    <button class="btn btn-secondary" type="button" [disabled]="joinprev" (click)="joinSection(-1)" nbTooltip="Join Previous" nbTooltipPlacement="top">
+      <i class="fa fa-arrow-circle-left"></i> 
+    </button>
+    <button class="btn btn-secondary" type="button" [disabled]="joinnext" (click)="joinSection(1)" nbTooltip="Join Next" nbTooltipPlacement="top">
+      <i class="fa fa-arrow-circle-right"></i>
+    </button>
+    <br>
+    <div class="input-group">
+      <button class="btn btn-secondary" type="button" [disabled]="!node" (click)="splitSection()" nbTooltip="Split Section" nbTooltipPlacement="top">
+        <i class="fa fa-expand"></i>
+        <!--  first-aid -->
+      </button>
+      <input class="split" type="text" name="splits" [(ngModel)]="splits">
+      <button class="btn btn-secondary" type="button" [disabled]="!node" (click)="deleteNode()" nbTooltip="Delete" nbTooltipPlacement="top">
+        <i class="fa fa-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+

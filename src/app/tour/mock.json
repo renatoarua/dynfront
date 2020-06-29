@@ -1,0 +1,524 @@
+{
+  status: 'ready',
+  project: {
+    projectId: 'uaUAbHcRRv0M5k8pl5xnX',
+    userId: 1,
+    name: 'final_roll5',
+    status: 'ACT',
+    machine: {
+      machineId: 'HJOal02S817NbwqmM0Pnt',
+      projectId: 'uaUAbHcRRv0M5k8pl5xnX',
+      status: 'ACT',
+      version: '0',
+      length: '0.000000e+0',
+      ldratio: '2.136190e+0',
+      sections: [
+        {
+          sectionId: 'OnAOM158w8ioylalIyTsd',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          materialId: '1',
+          position: '5.000000e+1',
+          externalDiameter: '2.500000e+1',
+          internalDiameter: '0.000000e+0',
+          young: '2.100000e+11',
+          poisson: '3.000000e-1',
+          density: '7.850000e+3',
+          axialForce: '0.000000e+0',
+          magneticForce: '0.000000e+0',
+          group: 'sections',
+          info: {
+            text: 'Section ',
+            x: 10,
+            y: 10,
+            color: 'green'
+          },
+          area: {
+            d: 'M0,-12.5 v25 h50 v-25 Z'
+          },
+          border: {
+            x: 0,
+            y: -12.5,
+            w: 50,
+            h: 25
+          }
+        },
+        {
+          sectionId: '9wFunk9b9soMLyJ6QmfVy',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          materialId: '1',
+          position: '1.500000e+2',
+          externalDiameter: '3.500000e+1',
+          internalDiameter: '0.000000e+0',
+          young: '2.100000e+11',
+          poisson: '3.000000e-1',
+          density: '7.850000e+3',
+          axialForce: '0.000000e+0',
+          magneticForce: '0.000000e+0',
+          group: 'sections',
+          info: {
+            text: 'Section ',
+            x: 10,
+            y: 10,
+            color: 'green'
+          },
+          area: {
+            d: 'M50,-17.5 v35 h100 v-35 Z'
+          },
+          border: {
+            x: 50,
+            y: -17.5,
+            w: 100,
+            h: 35
+          }
+        },
+        {
+          sectionId: 'tWaAvX8bj9RTj7AicgBBA',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          materialId: '1',
+          position: '3.000000e+2',
+          externalDiameter: '4.500000e+1',
+          internalDiameter: '0.000000e+0',
+          young: '2.100000e+11',
+          poisson: '3.000000e-1',
+          density: '7.850000e+3',
+          axialForce: '0.000000e+0',
+          magneticForce: '0.000000e+0',
+          group: 'sections',
+          info: {
+            text: 'Section ',
+            x: 10,
+            y: 10,
+            color: 'green'
+          },
+          area: {
+            d: 'M150,-22.5 v45 h150 v-45 Z'
+          },
+          border: {
+            x: 150,
+            y: -22.5,
+            w: 150,
+            h: 45
+          }
+        },
+        {
+          sectionId: 'ZTReXipD04ppixuwszNX4',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          materialId: '1',
+          position: '4.000000e+2',
+          externalDiameter: '3.500000e+1',
+          internalDiameter: '0.000000e+0',
+          young: '2.100000e+11',
+          poisson: '3.000000e-1',
+          density: '7.850000e+3',
+          axialForce: '0.000000e+0',
+          magneticForce: '0.000000e+0',
+          group: 'sections',
+          info: {
+            text: 'Section ',
+            x: 10,
+            y: 10,
+            color: 'green'
+          },
+          area: {
+            d: 'M300,-17.5 v35 h100 v-35 Z'
+          },
+          border: {
+            x: 300,
+            y: -17.5,
+            w: 100,
+            h: 35
+          }
+        },
+        {
+          sectionId: 'xLm5bSZ3cYH98jF3dM066',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          materialId: '1',
+          position: '4.500000e+2',
+          externalDiameter: '2.500000e+1',
+          internalDiameter: '0.000000e+0',
+          young: '2.100000e+11',
+          poisson: '3.000000e-1',
+          density: '7.850000e+3',
+          axialForce: '0.000000e+0',
+          magneticForce: '0.000000e+0',
+          group: 'sections',
+          info: {
+            text: 'Section ',
+            x: 10,
+            y: 10,
+            color: 'green'
+          },
+          area: {
+            d: 'M400,-12.5 v25 h50 v-25 Z'
+          },
+          border: {
+            x: 400,
+            y: -12.5,
+            w: 50,
+            h: 25
+          }
+        }
+      ],
+      ribs: [
+        {
+          ribId: 'R4v36X8yTRjSBKahajbAY',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          position: '3.000000e+3',
+          number: '6.000000e+0',
+          webThickness: '6.000000e+0',
+          webDepth: '6.000000e+1',
+          flangeWidth: '3.000000e+1',
+          flangeThick: '4.000000e+0',
+          group: 'ribs',
+          info: {
+            text: 'Rib ',
+            x: 10,
+            y: 10,
+            color: 'yellow'
+          },
+          area: {
+            d: 'M2980,-40 l20,-24 l20,24 Z'
+          },
+          border: {
+            x: 2990,
+            y: -40,
+            w: 20,
+            h: 20
+          }
+        }
+      ],
+      discs: [
+        {
+          discId: '3ZWVwglzSBxWaMh0kX5Js',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          materialId: '2',
+          position: '3.000000e+2',
+          externalDiameter: '3.500000e+2',
+          internalDiameter: '1.700000e+2',
+          thickness: '2.000000e+1',
+          density: '7.850000e+3',
+          ix: '0.000000e+0',
+          iy: '0.000000e+0',
+          iz: '0.000000e+0',
+          length: '0.000000e+0',
+          mass: '0.000000e+0',
+          group: 'discs',
+          info: {
+            text: 'Disc ',
+            x: 10,
+            y: 10,
+            color: 'blue'
+          },
+          area: {
+            d: 'M290,-175 v350 h20 v-350 Z'
+          },
+          border: {
+            x: 290,
+            y: -175,
+            w: 20,
+            h: 350
+          }
+        }
+      ],
+      rollerbearings: [
+        {
+          rollerBearingId: 'hRzYEq86e6Q6UgprSUvuC',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          position: '0.000000e+0',
+          mass: '5.000000e-1',
+          inertia: '0.000000e+0',
+          kxx: '1.000000e+7',
+          kxz: '0.000000e+0',
+          kzx: '0.000000e+0',
+          kzz: '1.000000e+7',
+          cxx: '6.000000e+2',
+          cxz: '0.000000e+0',
+          czx: '0.000000e+0',
+          czz: '6.000000e+2',
+          ktt: '0.000000e+0',
+          ktp: '0.000000e+0',
+          kpp: '0.000000e+0',
+          kpt: '0.000000e+0',
+          ctt: '0.000000e+0',
+          ctp: '0.000000e+0',
+          cpp: '0.000000e+0',
+          cpt: '0.000000e+0',
+          group: 'rollerbearings',
+          info: {
+            text: 'RollerBearing ',
+            x: 10,
+            y: 10,
+            color: 'red'
+          },
+          area: {
+            d: 'M-20,-45 l20,24 l20,-24 Z'
+          },
+          border: {
+            x: -10,
+            y: -45,
+            w: 20,
+            h: 20
+          }
+        },
+        {
+          rollerBearingId: 'vWSH7itS2EKtZVyWaIBLf',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          position: '4.500000e+2',
+          mass: '5.000000e-1',
+          inertia: '0.000000e+0',
+          kxx: '1.000000e+7',
+          kxz: '0.000000e+0',
+          kzx: '0.000000e+0',
+          kzz: '1.000000e+7',
+          cxx: '6.000000e+2',
+          cxz: '0.000000e+0',
+          czx: '0.000000e+0',
+          czz: '6.000000e+2',
+          ktt: '0.000000e+0',
+          ktp: '0.000000e+0',
+          kpp: '0.000000e+0',
+          kpt: '0.000000e+0',
+          ctt: '0.000000e+0',
+          ctp: '0.000000e+0',
+          cpp: '0.000000e+0',
+          cpt: '0.000000e+0',
+          group: 'rollerbearings',
+          info: {
+            text: 'RollerBearing ',
+            x: 10,
+            y: 10,
+            color: 'red'
+          },
+          area: {
+            d: 'M430,-45 l20,24 l20,-24 Z'
+          },
+          border: {
+            x: 440,
+            y: -45,
+            w: 20,
+            h: 20
+          }
+        }
+      ],
+      journalbearings: [],
+      ves: [],
+      abs: [],
+      foundations: [
+        {
+          foundationId: 'R3PuZqN7nIqIlJg7FtAPB',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          position: '0.000000e+0',
+          kxx: '1.000000e+7',
+          kzz: '1.000000e+7',
+          cxx: '0.000000e+0',
+          czz: '0.000000e+0',
+          mass: '2.000000e+0',
+          group: 'foundations',
+          info: {
+            text: 'Foundation ',
+            x: 10,
+            y: 10,
+            color: 'maroon'
+          },
+          area: {
+            d: 'M-20,-74 l20,24 l20,-24 Z'
+          },
+          border: {
+            x: -10,
+            y: -74,
+            w: 20,
+            h: 20
+          }
+        },
+        {
+          foundationId: '5MVLCiUZxlOZYMK2vqC0n',
+          machineId: 'HJOal02S817NbwqmM0Pnt',
+          position: '4.500000e+2',
+          kxx: '1.000000e+7',
+          kzz: '1.000000e+7',
+          cxx: '0.000000e+0',
+          czz: '0.000000e+0',
+          mass: '2.000000e+0',
+          group: 'foundations',
+          info: {
+            text: 'Foundation ',
+            x: 10,
+            y: 10,
+            color: 'maroon'
+          },
+          area: {
+            d: 'M430,-74 l20,24 l20,-24 Z'
+          },
+          border: {
+            x: 440,
+            y: -74,
+            w: 20,
+            h: 20
+          }
+        }
+      ]
+    },
+    user: {
+      id: 1,
+      username: 'admin',
+      email: 'admin@demo.com',
+      picture: 'assets/img/avatars/3.jpg',
+      unconfirmed_email: 'admin@demo.com',
+      role: 99,
+      role_label: 'Administrator',
+      last_login_at: '2018-09-12 14:59:02',
+      last_login_ip: '127.0.0.1',
+      confirmed_at: '2017-05-05 16:38:48',
+      blocked_at: null,
+      status: 10,
+      status_label: 'Active',
+      created_at: '2017-05-05 16:38:03',
+      updated_at: '2018-09-12 17:59:01',
+      permissions: [
+        {
+          name: 'manageSettings',
+          description: 'Manage settings',
+          checked: false
+        },
+        {
+          name: 'manageStaffs',
+          description: 'Manage staffs',
+          checked: false
+        },
+        {
+          name: 'manageUsers',
+          description: 'Manage users',
+          checked: false
+        }
+      ]
+    },
+    projectsetting: {
+      id: 8,
+      projectId: 'uaUAbHcRRv0M5k8pl5xnX',
+      foundation: 1,
+      rollerbearing: 1,
+      journalbearing: 0,
+      ves: 0,
+      abs: 0,
+      staticLine: 1,
+      fatigue: 0,
+      campbell: 1,
+      modes: 1,
+      criticalMap: 0,
+      unbalanceResponse: 1,
+      constantResponse: 1,
+      timeResponse: 1,
+      torsional: 1,
+      balanceOptimization: 0,
+      vesOptimization: 0,
+      absOptimization: 0,
+      resultcampbell: [
+        {
+          campbellId: 'R4v36X8yTRjSBKahajbAY',
+          settingId: 8,
+          initialSpin: '2.000000e+2',
+          finalSpin: '2.500000e+4',
+          steps: '3.000000e+2',
+          crsp: '8.000000e+0'
+        }
+      ],
+      resultstiffness: [],
+      resultmodes: [
+        {
+          modesId: 'AlgK1ATcK6C8NeCRkqThA',
+          settingId: 8,
+          maxFrequency: '1.500000e+5',
+          numModes: '6.000000e+0'
+        }
+      ],
+      resultconstant: [
+        {
+          constantId: '5fo5zF9c70YXhGqSZbOXw',
+          settingId: 8,
+          initialFrequency: '1.000000e+0',
+          finalFrequency: '5.000000e+2',
+          steps: '5.000000e+2',
+          modes: '2.000000e+1',
+          speed: '3.000000e+3',
+          responses: [
+            {
+              responseId: '4bJKWj88h9pgOTLLmXO6A',
+              model: 'resultconstant',
+              modelId: '5fo5zF9c70YXhGqSZbOXw',
+              position: '3.000000e-1',
+              coord: '1.000000e+0'
+            }
+          ],
+          forces: [
+            {
+              forceId: 'M2jGVgXYt7E06JYSlJPbu',
+              constantId: '5fo5zF9c70YXhGqSZbOXw',
+              position: '3.000000e-1',
+              coord: '1.000000e+0',
+              force: '1.000000e+1'
+            }
+          ]
+        }
+      ],
+      resultunbalance: [
+        {
+          unbalanceId: '7sB7UtHBUMFDyt0XnrML9',
+          settingId: 8,
+          initialSpin: '1.000000e+3',
+          finalSpin: '3.000000e+4',
+          steps: '3.500000e+2',
+          modes: '2.000000e+1',
+          responses: [
+            {
+              responseId: 'G2uXJsyeBnAQD4q1MfFSI',
+              model: 'resultunbalance',
+              modelId: '7sB7UtHBUMFDyt0XnrML9',
+              position: '2.500000e-1',
+              coord: '1.000000e+0'
+            }
+          ],
+          phases: [
+            {
+              phaseId: 'RJCGZ4zBHQRhzPPCqMTiP',
+              model: 'unbalance',
+              modelId: '7sB7UtHBUMFDyt0XnrML9',
+              position: '2.500000e-1',
+              unbalance: '5.000000e-5',
+              phase: '1.000000e+0'
+            }
+          ]
+        }
+      ],
+      resulttorsional: [
+        {
+          torsionalId: 'Nki626wTeFo2avD4jOPtL',
+          settingId: 8,
+          initialFrequency: '1.000000e+0',
+          finalFrequency: '5.000000e+2',
+          steps: '5.000000e+2',
+          modes: '2.000000e+1',
+          responses: [
+            {
+              responseId: 'RJCGZ4zBHQRhzPPCqMTiP',
+              model: 'resulttorsional',
+              modelId: 'Nki626wTeFo2avD4jOPtL',
+              position: '3.000000e-1',
+              coord: '0.000000e+0'
+            }
+          ],
+          phases: [
+            {
+              torkPhaseId: 'hL7Jx3zbnpXmCeI6iif8o',
+              torsionalId: 'Nki626wTeFo2avD4jOPtL',
+              position: '3.000000e-1',
+              tork: '6.000000e+1',
+              phase: '1.000000e+1'
+            }
+          ]
+        }
+      ],
+      resulttime: []
+    }
+  },
+  errors: []
+}

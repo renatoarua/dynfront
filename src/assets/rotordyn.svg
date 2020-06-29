@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 960 560" style="enable-background:new 0 0 960 560;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#006837;}
+	.st1{fill:#009245;}
+	.st2{fill:#FF00FF;}
+	.st3{fill:#C1272D;}
+	.st4{fill:#FFFFFF;}
+</style>
+<g>
+	<g>
+		<rect x="240.5" y="214.5" class="st0" width="9" height="119"/>
+		<path class="st1" d="M249,215v118h-8V215H249 M250,214h-10v120h10V214L250,214z"/>
+	</g>
+	<g>
+		<rect x="384.5" y="194.5" class="st0" width="9" height="159"/>
+		<path class="st1" d="M393,195v158h-8V195H393 M394,194h-10v160h10V194L394,194z"/>
+	</g>
+	<g>
+		<rect x="575.5" y="194.5" class="st0" width="9" height="159"/>
+		<path class="st1" d="M584,195v158h-8V195H584 M585,194h-10v160h10V194L585,194z"/>
+	</g>
+	<g>
+		<rect x="720.5" y="214.5" class="st0" width="9" height="119"/>
+		<path class="st1" d="M729,215v118h-8V215H729 M730,214h-10v120h10V214L730,214z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon class="st2" points="185.7,309 193.5,295.5 201.3,309 		"/>
+		<path class="st3" d="M193.5,296.5l6.9,12h-13.9L193.5,296.5 M193.5,294.5l-8.7,15h17.3L193.5,294.5L193.5,294.5z"/>
+	</g>
+	<g>
+		<polygon class="st2" points="472.7,307 480.5,293.5 488.3,307 		"/>
+		<path class="st3" d="M480.5,294.5l6.9,12h-13.9L480.5,294.5 M480.5,292.5l-8.7,15h17.3L480.5,292.5L480.5,292.5z"/>
+	</g>
+	<g>
+		<polygon class="st2" points="472.7,243 488.3,243 480.5,256.5 		"/>
+		<path class="st3" d="M487.4,243.5l-6.9,12l-6.9-12H487.4 M489.2,242.5h-17.3l8.7,15L489.2,242.5L489.2,242.5z"/>
+	</g>
+	<g>
+		<polygon class="st2" points="185.7,243 201.3,243 193.5,256.5 		"/>
+		<path class="st3" d="M200.4,243.5l-6.9,12l-6.9-12H200.4 M202.2,242.5h-17.3l8.7,15L202.2,242.5L202.2,242.5z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<rect x="725.5" y="259.5" class="st4" width="104" height="29"/>
+		<path d="M829,260v28H726v-28H829 M830,259H725v30h105V259L830,259z"/>
+	</g>
+	<g>
+		<rect x="580.5" y="256.5" class="st4" width="144" height="34"/>
+		<path d="M724,257v33H581v-33H724 M725,256H580v35h145V256L725,256z"/>
+	</g>
+	<g>
+		<rect x="389.5" y="251.5" class="st4" width="90" height="44"/>
+		<path d="M479,252v43h-89v-43H479 M480,251h-91v45h91V251L480,251z"/>
+	</g>
+	<g>
+		<rect x="244.5" y="256.5" class="st4" width="144" height="34"/>
+		<path d="M388,257v33H245v-33H388 M389,256H244v35h145V256L389,256z"/>
+	</g>
+	<g>
+		<rect x="139.5" y="258.5" class="st4" width="54" height="29"/>
+		<path d="M193,259v28h-53v-28H193 M194,258h-55v30h55V258L194,258z"/>
+	</g>
+	<g>
+		<rect x="194.5" y="258.5" class="st4" width="50" height="29"/>
+		<path d="M244,259v28h-49v-28H244 M245,258h-51v30h51V258L245,258z"/>
+	</g>
+	<g>
+		<rect x="480.5" y="251.5" class="st4" width="99" height="44"/>
+		<path d="M579,252v43h-98v-43H579 M580,251H480v45h100V251L580,251z"/>
+	</g>
+</g>
+</svg>

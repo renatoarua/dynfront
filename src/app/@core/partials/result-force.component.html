@@ -1,0 +1,28 @@
+<h2 class="title">External Force</h2>
+<div class="result-form" [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.position.invalid && data.controls.position.dirty}">
+            <!--position-->
+            <label for="position">Position <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="position" placeholder="Position" formControlName="position">
+            <p class="unit">({{_units.length.symbol}})</p>
+            <show-errors [control]="data.controls.position"></show-errors>
+        </div>
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.force.invalid && data.controls.force.dirty}">
+            <!--force-->
+            <label for="force">Force <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="force" placeholder="Force" formControlName="force">
+            <p class="unit">({{_units.force.symbol}})</p>
+            <show-errors [control]="data.controls.force"></show-errors>
+        </div>
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.coord.invalid && data.controls.coord.dirty}">
+            <!--coord-->
+            <label for="coord">Coord </label>
+            <select class="form-control" id="coord" formControlName="coord">
+                <option *ngFor="let elem of _coords" value="{{elem.value}}">{{elem.label}}</option>
+            </select>
+            <p class="unit">(axis)</p>
+        </div>
+    </div>
+
+</div>

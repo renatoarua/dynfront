@@ -1,0 +1,79 @@
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-12">
+	       <!-- simple -->
+            <label for="simple">Sheet Composition <span class="required">*</span></label>
+            <select class="form-control" id="simple" (change)="changeMaterials($event.target.value)" formControlName="simple">
+                <option *ngFor="let compType of _compTypes" [value]="compType.value" [selected]="">{{compType.label}}</option>
+            </select>
+            <div class="col-sm-12" [hidden]="data.controls.simple.valid">
+                <span class="help-block help-block-error">Sheet is required</span>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <!-- single -->
+            <label for="single">Sheet Composition <span class="required">*</span></label>
+            <select class="form-control" id="single" (change)="changeSingle($event.target.value)" formControlName="single">
+                <option *ngFor="let singleType of _singleTypes" [value]="singleType.value" [selected]="">{{singleType.label}}</option>
+            </select>
+            <div class="col-sm-12" [hidden]="data.controls.single.valid">
+                <span class="help-block help-block-error">Sheet is required</span>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <!-- type -->
+            <label for="type">Type <span class="required">*</span></label>
+            <select class="form-control" id="type" (change)="changeType($event.target.value)" formControlName="type">
+                <option *ngFor="let type of _types" [value]="type.value" [selected]="">{{type.label}}</option>
+            </select>
+            <div class="col-sm-12" [hidden]="data.controls.type.valid">
+                <span class="help-block help-block-error">Type is required</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-block">
+        <!-- list of materials -->
+        <div class="form-group-wrapper" formArrayName="materials">
+            <div class="new-item" *ngFor="let mat of data.get('materials'); let i=index">
+                <div class="panel-heading">
+                  <span>Material {{i + 1}}</span>
+                </div>
+
+                <div class="panel-body" [formGroupName]="i">
+                    <sheet-material [data]="data.controls['materials'].controls[i]"></sheet-material>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-block">
+        <!-- list of translations -->
+        <div class="form-group-wrapper" formArrayName="translations">
+            <div class="new-item" *ngFor="let mat of data.get('translations'); let i=index">
+                <div class="panel-heading">
+                  <span>Translation {{i + 1}}</span>
+                </div>
+
+                <div class="panel-body" [formGroupName]="i">
+                    <sheet-translation [data]="data.controls['translations'].controls[i]" [single]="!_single && i == 1"></sheet-translation>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-block">
+        <!-- list of rotations -->
+        <div class="form-group-wrapper" formArrayName="rotations">
+            <div class="new-item" *ngFor="let mat of data.get('rotations'); let i=index">
+                <div class="panel-heading">
+                  <span>Rotation {{i + 1}}</span>
+                </div>
+
+                <div class="panel-body" [formGroupName]="i">
+                    <sheet-rotation [data]="data.controls['rotations'].controls[i]" [single]="!_single && i == 1"></sheet-rotation>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

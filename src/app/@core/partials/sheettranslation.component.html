@@ -1,0 +1,36 @@
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-6">
+            <!-- segments -->
+            <label for="segments">Number of Segments </label>
+            <input type="number" class="form-control" id="segments" placeholder="Segments" formControlName="segments">
+            <div class="col-sm-12" [hidden]="data.controls.segments.valid">
+                <span class="help-block help-block-error">Segments is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+        	<!-- thickness -->
+            <label for="thickness" [innerHTML]="'Thickness ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="thickness" placeholder="Thickness" formControlName="thickness">
+            <div class="col-sm-12" [hidden]="data.controls.thickness.valid">
+                <span class="help-block help-block-error">Thickness is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- diameter -->
+            <label for="diameter" [innerHTML]="'Diameter ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="diameter" placeholder="Diameter" formControlName="diameter">
+            <div class="col-sm-12" [hidden]="data.controls.diameter.valid">
+                <span class="help-block help-block-error">Diameter is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6" *ngIf="_showExtra">
+            <!-- mass -->
+            <label for="mass" [innerHTML]="'Mass ('+_units.mass.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="mass" placeholder="Mass" formControlName="mass">
+            <div class="col-sm-12" [hidden]="data.controls.mass.valid">
+                <span class="help-block help-block-error">Mass is required</span>
+            </div>
+        </div>
+    </div>
+</div>

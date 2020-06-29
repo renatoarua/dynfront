@@ -1,0 +1,32 @@
+<nb-card>
+    <nb-card-body>
+        <div class="flex-centered col-xl-4 col-lg-6 col-md-8 col-sm-12">
+            <div *ngIf="errorMessage != ''">
+                <h1>Error occurred</h1>
+                <br/>
+                <p class="text-muted" style="white-space: pre;">{{errorMessage}}</p>
+                <div class="row">
+                    <div class="col-6">
+                        <a [routerLink]="['/auth/login']" class="btn btn-link px-0">Back to Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="submitted == true && isConfirmed == false">
+                <h2 class="title">Confirming your account</h2>
+            </div>
+            <div *ngIf="submitted == true && isConfirmed == true">
+                <h1>Account Confirmed</h1>
+                <br/>
+                <p class="text-muted">
+                    Your account has been confirmed. Please login now.
+                </p>
+                <div class="row">
+                    <div class="col-6">
+                        <a [routerLink]="['/auth/login']" class="btn btn-link px-0">Go to Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

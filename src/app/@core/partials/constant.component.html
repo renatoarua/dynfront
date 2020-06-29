@@ -1,0 +1,98 @@
+<h2 class="title">Constant Response</h2>
+<div *ngIf="!length">
+    <h2>No section dimensions!</h2>
+</div>
+<div class="result-form" [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.initialFrequency.invalid && data.controls.initialFrequency.dirty}">
+            <!--initialFrequency-->
+            <label for="initialFrequency">Initial Frequency <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="initialFrequency" placeholder="Initial Frequency" formControlName="initialFrequency">
+            <p class="unit">(Hz)</p>
+            <show-errors [control]="data.controls.initialFrequency"></show-errors>
+        </div>
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.finalFrequency.invalid && data.controls.finalFrequency.dirty}">
+            <!--finalFrequency-->
+            <label for="finalFrequency">Final Frequency <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="finalFrequency" placeholder="Final Frequency" formControlName="finalFrequency">
+            <p class="unit">(Hz)</p>
+            <show-errors [control]="data.controls.finalFrequency"></show-errors>
+        </div>
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.steps.invalid && data.controls.steps.dirty}">
+            <!--steps-->
+            <label for="steps">Steps <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="steps" placeholder="Number of Steps" formControlName="steps">
+            <p class="unit">(u.)</p>
+            <show-errors [control]="data.controls.steps"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.modes.invalid && data.controls.modes.dirty}">
+            <!--modes-->
+            <label for="modes">Number of Modes <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="modes" placeholder="Number of Modes" formControlName="modes">
+            <p class="unit">(u.)</p>
+            <show-errors [control]="data.controls.modes"></show-errors>
+        </div>
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.speed.invalid && data.controls.speed.dirty}">
+            <!--speed-->
+            <label for="speed">Max Spin <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="speed" placeholder="Max Spin Speed" formControlName="speed">
+            <p class="unit">(rpm)</p>
+            <show-errors [control]="data.controls.speed"></show-errors>
+        </div>
+    </div>
+    <!-- responses -->
+    <div class="form-group-wrapper">
+        <div class="form-group" formArrayName="responses">
+            <div *ngFor="let bearing of data.get('responses'); let i=index">
+                <div class="panel-heading">
+                  <span>Response Point {{i + 1}}</span>
+                  <span (click)="removeResponse(i)"> <i class="fa fa-times"></i></span>
+                </div>
+
+                <div class="panel-body" [formGroupName]="i">
+                    <result-response [data]="data.controls['responses'].controls[i]"></result-response>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <show-errors [control]="data.controls.responses"></show-errors>
+            <button class="btn btn-info" (click)="addResponse()">
+                Add Response Point <i class="fa fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- forces -->
+    <div class="form-group-wrapper">
+        <div class="form-group" formArrayName="forces">
+            <div *ngFor="let bearing of data.get('forces'); let i=index">
+                <div class="panel-heading">
+                  <span>External Force {{i + 1}}</span>
+                  <span (click)="removeForce(i)"> <i class="fa fa-times"></i></span>
+                </div>
+
+                <div class="panel-body" [formGroupName]="i">
+                    <result-force [data]="data.controls['forces'].controls[i]"></result-force>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <show-errors [control]="data.controls.forces"></show-errors>
+            <button class="btn btn-info" (click)="addForce()">
+                Add External Force <i class="fa fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-info" (click)="close()">Save</button>
+        </div>
+    </div>
+</div>

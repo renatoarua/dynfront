@@ -1,0 +1,107 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  .errors {
+    p {
+      color: nb-theme(color-danger);
+
+      &:before {
+        content: ">";
+        color: nb-theme(color-primary);
+        animation: blinker 0.5s linear infinite;
+      }
+      a {
+        color: nb-theme(color-white);
+        cursor: pointer;
+        float: right;
+      }
+      a:hover {
+        color: nb-theme(color-fg);
+      }
+    }
+  }
+
+  .terminal {
+    position: absolute;
+    left: 25px;
+    bottom: 0;
+    p {
+      color: nb-theme(color-success);
+      white-space: pre;
+      margin-bottom: 0.3rem;
+      &:before {
+        content: ">";
+        color: nb-theme(color-primary);
+      }
+      &.error {
+        color: nb-theme(color-danger);
+        a {
+          color: nb-theme(color-white);
+          cursor: pointer;
+          float: right;
+        }
+        a:hover {
+          color: nb-theme(color-fg);
+        }
+      }
+      &.warning {
+        color: nb-theme(color-warning);
+      }
+      &.cmd {
+        color: nb-theme(color-primary);
+        font-weight: bolder;
+      }
+      &.success {
+        color: nb-theme(color-primary);
+        font-weight: bolder;
+        &:before {
+          content: " ";
+        }
+      }
+    }
+
+    .new-line {
+      color: nb-theme(color-white);
+      &:before {
+        content: "$";
+        color: nb-theme(color-primary);
+      }
+      span {
+        color: nb-theme(color-primary);
+        animation: blinker 0.5s linear infinite;
+      }
+    }
+  }
+
+  .clear {
+    p {
+      color: nb-theme(color-success);
+
+      &:before {
+        content: ">";
+        color: nb-theme(color-primary);
+        animation: blinker 0.5s linear infinite;
+      }
+    }
+  }
+
+  nb-alert {
+    span {
+      a {
+        color: nb-theme(color-bg);
+        cursor: pointer;
+        float: right;
+      }
+      a:hover {
+        color: nb-theme(color-fg);
+      }
+    }
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+}

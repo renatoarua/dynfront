@@ -1,0 +1,69 @@
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-6">
+	       <!-- g0 -->
+            <label class="col-sm-12" for="go">G0 <span class="required">*</span></label>
+            <input type="number" class="form-control" id="go" placeholder="G0" formControlName="go">
+            <div class="col-sm-12" [hidden]="data.controls.go.valid">
+                <span class="help-block help-block-error">G0 is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- goo -->
+            <label class="col-sm-12" for="goo">Goo <span class="required">*</span></label>
+            <input type="number" class="form-control" id="goo" placeholder="Goo" formControlName="goo">
+            <div class="col-sm-12" [hidden]="data.controls.goo.valid">
+                <span class="help-block help-block-error">Goo is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- beta -->
+            <label class="col-sm-12" for="beta">Beta <span class="required">*</span></label>
+            <input type="number" class="form-control" id="beta" placeholder="Beta" formControlName="beta">
+            <div class="col-sm-12" [hidden]="data.controls.beta.valid">
+                <span class="help-block help-block-error">Beta is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- b1 -->
+            <label class="col-sm-12" for="b1">B1 <span class="required">*</span></label>
+            <input type="number" class="form-control" id="b1" placeholder="B1" formControlName="b1">
+            <div class="col-sm-12" [hidden]="data.controls.b1.valid">
+                <span class="help-block help-block-error">B1 is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- theta1 -->
+            <label class="col-sm-12" for="theta1">Theta #1 <span class="required">*</span></label>
+            <input type="number" class="form-control" id="theta1" placeholder="Theta 1" formControlName="theta1">
+            <div class="col-sm-12" [hidden]="data.controls.theta1.valid">
+                <span class="help-block help-block-error">Theta #1 is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- theta2 -->
+            <label class="col-sm-12" for="theta2">Theta #2 <span class="required">*</span></label>
+            <input type="number" class="form-control" id="theta2" placeholder="Theta 2" formControlName="theta2">
+            <div class="col-sm-12" [hidden]="data.controls.theta2.valid">
+                <span class="help-block help-block-error">Theta #2 is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- temperature -->
+            <label class="col-sm-12" for="temperature">Temperature <span class="required">*</span></label>
+            <input type="number" class="form-control" id="temperature" placeholder="Temperature" formControlName="temperature">
+            <div class="col-sm-12" [hidden]="data.controls.temperature.valid">
+                <span class="help-block help-block-error">Temperature is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- temperatureRef -->
+            <label class="col-sm-12" for="temperatureRef">Temperature Reference <span class="required">*</span></label>
+            <input type="number" class="form-control" id="temperatureRef" placeholder="Temperature Reference" formControlName="temperatureRef">
+            <div class="col-sm-12" [hidden]="data.controls.temperatureRef.valid">
+                <span class="help-block help-block-error">Temperature Reference is required</span>
+            </div>
+        </div>
+    </div>
+
+</div>

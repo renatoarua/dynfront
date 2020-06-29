@@ -1,0 +1,26 @@
+<h2 class="title">External Force</h2>
+<div class="result-form" [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.position.invalid && data.controls.position.dirty}">
+            <!--position-->
+            <label for="position">Position <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="position" placeholder="Position" formControlName="position">
+            <p class="unit">({{_units.length.symbol}})</p>
+            <show-errors [control]="data.controls.position"></show-errors>
+        </div>
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.tork.invalid && data.controls.tork.dirty}">
+            <!--tork-->
+            <label for="tork">Tork <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="tork" placeholder="Tork" formControlName="tork">
+            <p class="unit">({{_units.tork.symbol}})</p>
+            <show-errors [control]="data.controls.tork"></show-errors>
+        </div>
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.phase.invalid && data.controls.phase.dirty}">
+            <!--phase-->
+            <label for="phase" [innerHTML]="'Phase ('+_units.degrees.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="phase" placeholder="Phase" formControlName="phase">
+            <p class="unit">(°, degrees)</p>
+        </div>
+    </div>
+
+</div>

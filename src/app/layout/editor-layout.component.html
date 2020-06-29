@@ -1,0 +1,28 @@
+<dyn-editor-layout>
+  <nb-menu [items]="menu"></nb-menu>
+  <router-outlet></router-outlet>
+
+  <div class="toolbar">
+	<nb-card class="inverted">
+		<nb-card-header>Toolbar</nb-card-header>
+		<nb-card-body>
+			<dyn-node [model]="selected" [editing]="isEditing" (duplicate)="duplicateNode($event)" (delete)="deleteNode($event)" (edit)="editNode($event)" (split)="splitSection($event)" (join)="joinSection($event)"></dyn-node>
+			<dyn-toolbar [formModel]="formModel" [payload]="payload" (onModal)="openModal($event)" (onChange)="updateMachine($event)"></dyn-toolbar>
+			<div class="row">
+				<div class="title">
+					<h4>MESH</h4>
+					<span>length / diameter ratio</span>
+				</div>
+				<div class="range-slider">
+					<span id="ld-bullet" class="ld-label" [ngStyle]="{'left': (40 + (parse(txtRatio)/5) * 200) + 'px'}">{{txtRatio | number:'1.2-2'}}</span>
+					<input id="ld" class="ld-range" type="range" min="0.1" max="5" step="0.01" value="2.13" [(ngModel)]="txtRatio" (ngModelChange)="changeRatio($event)">
+				</div>
+				<div class="box-minmax">
+					<span>fine</span><span>coarse</span>
+				</div>
+			</div>
+		</nb-card-body>
+	</nb-card>
+  </div>
+</dyn-editor-layout>
+<dyn-side-modal (onConfirm)="onSubmit()" (onOpen)="onOpen()" (onCancel)="onCancel()"></dyn-side-modal>

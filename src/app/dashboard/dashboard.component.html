@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-sm-8" *ngIf="(_user | async) as user">
+    <dyn-balance [user]="user"></dyn-balance>
+  </div>
+  <div class="col-sm-12">
+    <ngx-projects [projects]="_projects | async"></ngx-projects>
+  </div>
+</div>
+

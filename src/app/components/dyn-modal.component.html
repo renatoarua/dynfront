@@ -1,0 +1,9 @@
+<div class="dyn-modal-move">
+	<div class="modal-move" [ngClass]="isActive?'show':'hidden'">
+		<button class="btn-close" (click)="closeModal()"><i class="nb-close-circled"></i></button>
+		<div class="form-wrapper">
+			<ng-template modal-host></ng-template>
+		</div>
+	</div>
+</div>
+

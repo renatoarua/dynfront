@@ -1,0 +1,17 @@
+<div class="animated fadeIn" *ngIf="!payments">
+    <spinner></spinner>
+</div>
+
+<div *ngIf="payments">
+    <div class="order-table">
+        <div class="stats-order" *ngFor="let entry of payments">
+            <div>
+                <span class="date"> {{ (entry.date | amFromUnix) | amDateFormat: 'MM-DD-YYYY HH:mm' }}</span>
+                <span class="delta" [ngClass]="{ 'down': entry.down }">{{ entry.amount | number:'1.0-0' }}</span>
+            </div>
+            <div class="results">
+                <b>{{entry.action.description}}</b>
+            </div>
+        </div>
+    </div>
+</div>

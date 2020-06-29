@@ -1,0 +1,169 @@
+<div class="row">
+  <div class="col-sm-8">
+    <nb-card size="large">
+      <div class="title">
+        <h4 id="step1">Project: Tour Project</h4>
+      </div>
+      <img src="assets/img/tour/twoviewer.jpg" style="width: 100%;">
+    </nb-card>
+  </div>
+  <div class="col-sm-4 toolbar" id="step2">
+    <nb-card>
+      <div class="title">
+        <h4>Toolbar</h4>
+      </div>
+
+      <div class="body" style="padding: 2rem;">
+        <div class="editor-options">
+          <button *ngFor="let t of editorOptions"
+            type="button" class="btn btn-secondary"
+            nbTooltip="{{t.title}}"
+            nbTooltipPlacement="bottom"
+            (click)="doAction(t)">
+            <i class="{{t.icon}}"></i>
+          </button>
+        </div>
+
+        <div class="editor-tools">
+          <button *ngFor="let t of editorTools"
+            type="button" class="btn btn-secondary"
+            (click)="openModal(t)">
+            {{t.title}}
+          </button>
+        </div>
+        <div class="row">
+          <div class="title">
+            <h4>MESH</h4>
+            <span>length / diameter ratio</span>
+          </div>
+          <div class="range-slider" id="step4">
+            <span id="ld-bullet" class="ld-label" [ngStyle]="{'left': (40 + (txtRatio/5) * 200) + 'px'}">{{txtRatio | number:'1.2-2'}}</span>
+            <input id="ld" class="ld-range" type="range" min="0.1" max="5" step="0.01" value="2.13" [(ngModel)]="txtRatio">
+          </div>
+          <div class="box-minmax">
+            <span>fine</span><span>coarse</span>
+          </div>
+        </div>
+        <!-- node -->
+        <div class="dyn-node">
+          <div class="title" id="step3">
+            <h4>Node Info</h4>
+          </div>
+          <div class="body" *ngIf="!node">
+            <div class="name">
+              <span>No node selected</span>
+            </div>
+          </div>
+
+          <div class="body" *ngIf="node">
+
+            <div class="name">
+              <span>{{node.info.text}}</span><span> #{{node.groupId+1}}</span>
+            </div>
+            <div class="number">
+              <span>node #{{node.nodeId+1}}</span>
+            </div>
+
+            <div class="node-info">
+              <div class="info">
+                <!-- <div class="group">
+                  <span>{{node.group}}</span>
+                </div>
+                <div class="big">
+                  <span>#{{node.groupId+1}}</span>
+                </div> -->
+              </div>
+              <div class="details">
+                <div class="parameter">
+                  <span class="parameter-name">pos</span>
+                  <span class="parameter-value">{{_nposition.toFixed(2)}}</span>
+                </div>
+                <div class="parameter">
+                  <span class="parameter-name">len/thic</span>
+                  <span class="parameter-value">{{_nlength.toFixed(2)}}</span>
+                </div>
+                <div class="parameter">
+                  <span class="parameter-name">diam</span>
+                  <span class="parameter-value">{{_ndiameter.toFixed(2)}}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="footer" *ngIf="editing">
+            <div class="common-tools" *ngIf="!_nisSection && !node">
+              <button class="btn btn-secondary" type="button" nbTooltip="Edit" nbTooltipPlacement="top">
+                <i class="fa fa-pencil"></i> 
+              </button>
+              <button class="btn btn-secondary" type="button" nbTooltip="Duplicate" nbTooltipPlacement="top">
+                <i class="fa fa-clone"></i>
+              </button>
+              <button class="btn btn-secondary" type="button" nbTooltip="Delete" nbTooltipPlacement="top">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+
+            <div class="section-tools" *ngIf="_nisSection">
+              <button class="btn btn-secondary" type="button" nbTooltip="Edit" nbTooltipPlacement="top">
+                <i class="fa fa-pencil"></i> 
+              </button>
+              <button class="btn btn-secondary" type="button" nbTooltip="Join Previous" nbTooltipPlacement="top">
+                <i class="fa fa-arrow-circle-left"></i> 
+              </button>
+              <button class="btn btn-secondary" type="button" nbTooltip="Join Next" nbTooltipPlacement="top">
+                <i class="fa fa-arrow-circle-right"></i>
+              </button>
+              <button class="btn btn-secondary" type="button" nbTooltip="Split Section" nbTooltipPlacement="top">
+                <i class="fa fa-expand"></i>
+                <!--  first-aid -->
+              </button>
+              <input class="form-control" type="text" name="splits" value="2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </nb-card>
+  </div>
+</div>
+
+
+<tour-step selector="step1" order="1" position="bottom" title="Project Edition">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    This is the 2D viewer in which we can "see" the numerical model 
+    based on the physical model and its characteristics.
+  </div>
+</tour-step>
+
+
+<tour-step selector="step2" order="2" position="left" title="Toolbar" elementsDisabled="true">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    This is the toolbar that allows us to manipulate our numerical model.
+    The main functions are undo/redo, reset, and save.
+    It is here where you can add parts to the model like section, discs, bearings, etc.
+  </div>
+</tour-step>
+
+<tour-step selector="step3" order="3" position="right" title="Node Info" elementsDisabled="false">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    When you select a node, its info appears in the bottom of the toolbar.
+    Additional options available there are, edit/duplicate/delete.
+    If the node selected is a section, you can join it with its neighbors or split it.
+  </div>
+</tour-step>
+
+<tour-step selector="step4" order="4" position="right" title="Mesh" elementsDisabled="false">
+  <span class="step-number">{{_currentStep}}</span>
+  <div class="step-content">
+    By changing the slider on the toolbar, you can change the ratio length/diameter 
+    adding or removing nodes to the mesh. The finer the mesh, the more nodes you have, 
+    And consequently, more computational power is needed. The nodes are represented by 
+    the black dots in the middle of the sections.
+  </div>
+</tour-step>
+
+<!-- Bluring element insert on top of the page-->
+<tour-overlay></tour-overlay>

@@ -1,0 +1,19 @@
+<div class="animated fadeIn" *ngIf="!user">
+    <spinner></spinner>
+</div>
+
+<div *ngIf="user">
+    <div class="order-table">
+        <div class="stats-order" *ngFor="let order of user.orders">
+            <div class="date">
+                {{ (order.date | amFromUnix) | amDateFormat: 'MM-DD-YYYY HH:mm' }}
+            </div>
+            <div class="quantity">
+                <b>{{ order.plan.tokens }}</b> DYN
+            </div>
+            <div class="price">
+                <b>{{ order.total | number : '1.2-2' }}</b> USD
+            </div>
+        </div>
+    </div>
+</div>

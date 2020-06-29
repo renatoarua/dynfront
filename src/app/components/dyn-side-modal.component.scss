@@ -1,0 +1,267 @@
+@import '../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+    .modal-move {
+      background: nb-theme(color-bg);
+      color: nb-theme(color-white);
+      /*nb-theme(search-bg);*/
+
+      .btn-close {
+        color: nb-theme(color-white);
+        /*color: nb-theme(search-btn-close-fg);*/
+        /*color: nb-theme(search-btn-open-fg);*/
+      }
+
+      span {
+        color: nb-theme(search-white);
+      }
+    }
+    .modal-move {
+        $sidebar-width: 7.5rem;
+        margin-top: 54px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        position: fixed;
+        z-index: 1020;
+        top: 0;
+        right: -1px;
+        width: 30%;
+        height: 100vh;
+        pointer-events: none;
+        opacity: 1;
+        transform: translate(500px);
+        transition: all 0.5s;
+
+        .btn-close {
+            position: absolute;
+            top: 3rem;
+            right: 3rem;
+            font-size: 2.5rem;
+            opacity: 0;
+            transition: opacity 0.5s;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-wrapper {
+            margin: 5rem 0;
+            opacity: 0;
+            transform: scale3d(0.8, 0.8, 1);
+            transition: opacity 0.5s, transform 0.5s;
+
+            width: 100%;
+            height: calc(100% - 30px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 3em;
+            margin-right: -3.2em;
+
+            ::ng-deep input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+              color: #0B293A !important;
+            }
+
+            ::ng-deep input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+              color: #bbb5af;
+            }
+
+            ::ng-deep input::-moz-placeholder, textarea::-moz-placeholder {
+              color: #0B293A;
+            }
+
+            ::ng-deep input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
+              color: #bbb5af;
+            }
+
+            ::ng-deep input::placeholder, textarea::placeholder {
+              color: #0B293A;
+            }
+
+            ::ng-deep input:focus::placeholder, textarea::focus:placeholder {
+              color: #bbb5af;
+            }
+
+            ::ng-deep input::-ms-placeholder, textarea::-ms-placeholder {
+              color: #0B293A;
+            }
+
+            ::ng-deep input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
+              color: #bbb5af;
+            }
+
+            /* on hover placeholder */
+
+            ::ng-deep input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
+              color: nb-theme(color-white);
+            }
+
+            ::ng-deep input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
+              color: #cbc6c1;
+            }
+
+            ::ng-deep input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
+              color: nb-theme(color-white);
+            }
+
+            ::ng-deep input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
+              color: #cbc6c1;
+            }
+
+            ::ng-deep input:hover::placeholder, textarea:hover::placeholder {
+              color: nb-theme(color-white);
+            }
+
+            ::ng-deep input:hover:focus::placeholder, textarea:hover:focus::placeholder {
+              color: #cbc6c1;
+            }
+
+            ::ng-deep input:hover::placeholder, textarea:hover::placeholder {
+              color: nb-theme(color-white);
+            }
+
+            ::ng-deep input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
+              color: #cbc6c1;
+            }
+
+            ::ng-deep input:-webkit-autofill, ::ng-deep textarea:-webkit-autofill, ::ng-deep select:-webkit-autofill {
+                background-color: transparent !important;
+                color: #0B293A;
+            }
+
+            ::ng-deep input, ::ng-deep select {
+              height: 42px;
+              padding: 0px 15px 0px 15px;
+              
+              background: transparent;
+              outline: none;
+              color: #0B293A;
+              border: solid 1px nb-theme(color-primary);
+              /*border-bottom: none;*/
+              
+              transition: all 0.3s ease-in-out;
+              -webkit-transition: all 0.3s ease-in-out;
+              -moz-transition: all 0.3s ease-in-out;
+              -ms-transition: all 0.3s ease-in-out;
+            }
+
+            ::ng-deep input:hover, ::ng-deep select:hover {
+              background: nb-theme(color-primary);
+              color: nb-theme(color-white);
+            }
+
+            ::ng-deep label {
+              font-size: 0.875em;
+              border: solid 1px nb-theme(color-primary);
+              margin-bottom: -1px;
+              padding: 3px;
+              margin-top: 3px;
+              background: nb-theme(color-primary);
+              color: nb-theme(color-white);
+              width: 100%;
+              font-weight: bold;
+            }
+
+            ::ng-deep textarea {
+              height: 110px;
+              max-height: 110px;
+              padding: 15px;
+              
+              background: transparent;
+              outline: none;
+              
+              color: #0B293A;
+              font-size: 0.875em;
+              
+              border: solid 1px nb-theme(color-primary);
+              
+              transition: all 0.3s ease-in-out;
+              -webkit-transition: all 0.3s ease-in-out;
+              -moz-transition: all 0.3s ease-in-out;
+              -ms-transition: all 0.3s ease-in-out;
+            }
+
+            ::ng-deep textarea:hover {
+              background: nb-theme(color-primary);
+              color: nb-theme(color-white);
+            }
+
+            ::ng-deep .has-danger {
+              input, label, textarea {
+                border: solid 1px nb-theme(color-danger);
+              }
+              label {
+                background: nb-theme(color-danger);
+              }
+            }
+
+            ::ng-deep .btn {
+              width: 100%;
+              padding: 0;
+              margin: 10px 0px 0px 0px;
+              
+              background: transparent;
+              color: nb-theme(color-primary);
+              height: 42px;
+              line-height: 42px;
+              
+              outline:none;
+              cursor: pointer;
+              
+              border: solid 1px nb-theme(color-primary);
+              /*border-top: none;*/
+              &:disabled {
+                background: nb-theme(color-danger);
+              }
+            }
+
+            ::ng-deep .btn:hover {
+              background: nb-theme(color-primary);
+              color: nb-theme(color-white);
+            }
+
+            ::ng-deep h2.title {
+                color: nb-theme(color-white);
+                font-family: nb-theme(font-secondary);
+            }
+
+            ::ng-deep div.card-block .new-item {
+                margin-top: 1em;
+                padding-top: 1em;
+                border-top: 1px solid nb-theme(color-primary);
+            }
+        }
+
+        &.hidden {
+            /*display:none;*/
+            opacity: 0;
+            transform: translate(500px);
+        }
+        &.show {
+            pointer-events: auto;
+            opacity: 1;
+            transform: translate(0px);
+            
+
+            .btn-close {
+                opacity: 1;
+            }
+
+            .form-wrapper {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @media screen and (max-width: 40rem) {
+            span {
+                text-align: left;
+            }
+        }
+    }
+}
+

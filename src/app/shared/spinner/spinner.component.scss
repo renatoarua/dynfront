@@ -1,0 +1,159 @@
+@import "spinner";
+
+.spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1003;
+  background: transparent;
+  overflow: hidden;
+  text-align: center;
+}
+
+.loader-bricks {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem;
+  width: 8em;
+  height: 1em;
+  top: 40%;
+  z-index: 1;
+  border-style: solid;
+  border-width: .1rem 0;
+  color: #3fbbb0;
+  background-image: linear-gradient(to right, transparent 0%, transparent 49.9%, #3fbbb0 50%, #3fbbb0 100%);
+  background-size: 25%;
+  -webkit-animation: loaderBar 1s infinite linear;
+          animation: loaderBar 1s infinite linear;
+}
+#toggle:checked ~ #sect .loader-bricks {
+  -webkit-filter: drop-shadow(0.3em 0.3em 0.3em rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0.3em 0.3em 0.3em rgba(0, 0, 0, 0.5));
+}
+.loader-bricks:before, .loader-bricks:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  z-index: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: -.1rem;
+  border: 0.1rem solid #3fbbb0;
+  border-width: .1rem 0;
+  color: #1d435a;
+  background-color: currentColor;
+  -webkit-animation: loaderBox 2s infinite linear;
+          animation: loaderBox 2s infinite linear;
+}
+.loader-bricks:after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@-webkit-keyframes loaderBar {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 2em;
+  }
+}
+
+@keyframes loaderBar {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 2em;
+  }
+}
+@-webkit-keyframes loaderBox {
+  0% {
+    color: #1d435a;
+    width: 1em;
+    right: 0;
+    top: 0;
+    border-color: #3fbbb0;
+  }
+  27% {
+    color: #1d435a;
+    width: 1em;
+    right: -1em;
+    top: 0;
+    border-color: transparent;
+  }
+  37.5% {
+    color: #083D56;
+    width: 1em;
+    right: -1em;
+    top: -1em;
+    border-color: transparent;
+  }
+  50% {
+    color: #083D56;
+    width: 1em;
+    right: 8em;
+    top: -1em;
+    border-color: transparent;
+  }
+  55% {
+    color: #1d435a;
+    width: 1em;
+    right: 8em;
+    top: 0em;
+    border-color: transparent;
+  }
+  100% {
+    color: #1d435a;
+    width: 0em;
+    right: 7em;
+    top: 0;
+    border-color: #3fbbb0;
+  }
+}
+@keyframes loaderBox {
+  0% {
+    color: #1d435a;
+    width: 1em;
+    right: 0;
+    top: 0;
+    border-color: #3fbbb0;
+  }
+  27% {
+    color: #1d435a;
+    width: 1em;
+    right: -1em;
+    top: 0;
+    border-color: transparent;
+  }
+  37.5% {
+    color: #083D56;
+    width: 1em;
+    right: -1em;
+    top: -1em;
+    border-color: transparent;
+  }
+  50% {
+    color: #083D56;
+    width: 1em;
+    right: 8em;
+    top: -1em;
+    border-color: transparent;
+  }
+  55% {
+    color: #1d435a;
+    width: 1em;
+    right: 8em;
+    top: 0em;
+    border-color: transparent;
+  }
+  100% {
+    color: #1d435a;
+    width: 0em;
+    right: 7em;
+    top: 0;
+    border-color: #3fbbb0;
+  }
+}

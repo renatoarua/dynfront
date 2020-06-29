@@ -1,0 +1,125 @@
+<div class="row" *ngIf="_errorMessage">
+    <nb-alert status="danger">
+      {{_errorMessage}}
+    </nb-alert>
+</div>
+
+<div class="animated fadeIn" *ngIf="(_project | async) as project; else loading">
+  <div class="row">
+    <div class="col-sm-8">
+      <!-- <dyn-svg [model]="project" [editing]="false"></dyn-svg> -->
+      <nb-card size="large">
+        <twoviewer [model]="project" ></twoviewer>
+      </nb-card>
+    </div>
+    <div class="col-sm-4">
+      <nb-card>
+        <nb-card-header>
+          <span>Static Line</span>
+        </nb-card-header>
+        <nb-card-body>
+          The static line is a graphic tool to analyze displacements due to static forces applied to system (distributed mass of the rotor). The user can find 4 important information in this graphic: translational displacements of the center of shaft cross sections, angular/rotational displacements of shaft cross sections, force and moment reactions in bearings, and bearings positions.
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>Static Line</span>
+        </nb-card-header>
+        <nb-card-body>
+          <dyn-line-chart [project]="project.projectId"></dyn-line-chart>
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>Campbell Diagram</span>
+        </nb-card-header>
+        <nb-card-body>
+          <div *ngIf="project.projectsetting.systemoptions.ves == false">
+            <!-- <dyn-campbell-chart [project]="project.projectId"></dyn-campbell-chart> -->
+          </div>
+          <div *ngIf="!(project.projectsetting.systemoptions.ves == false)">
+            <!-- <dyn-campbell3d-chart [project]="project.projectId"></dyn-campbell3d-chart> -->
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>Critical Map (Stiffness)</span>
+        </nb-card-header>
+        <nb-card-body>
+          <!-- <dyn-stiffness-chart [project]="project.projectId"></dyn-stiffness-chart> -->
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>Modes</span>
+        </nb-card-header>
+        <nb-card-body>
+          <dyn-modes-chart [project]="project.projectId"></dyn-modes-chart>
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>Unbalance Response</span>
+        </nb-card-header>
+        <nb-card-body>
+          <!-- <dyn-unbalance-chart [project]="project.projectId"></dyn-unbalance-chart> -->
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>Constant Response</span>
+        </nb-card-header>
+        <nb-card-body>
+          <!-- <dyn-constant-chart [project]="project.projectId"></dyn-constant-chart> -->
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>Torsional Analisys</span>
+        </nb-card-header>
+        <nb-card-body>
+          <!-- <dyn-torsional-chart [project]="project.projectId"></dyn-torsional-chart> -->
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>Time Response</span>
+        </nb-card-header>
+        <nb-card-body>
+          <!-- <dyn-time-chart [project]="project.projectId"></dyn-time-chart> -->
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+  </div>
+
+</div>
+
+<ng-template #loading>
+  <spinner></spinner>
+</ng-template>

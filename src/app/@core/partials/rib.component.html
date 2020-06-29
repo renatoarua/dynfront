@@ -1,0 +1,34 @@
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.number.invalid && data.controls.number.dirty}">
+            <!--number-->
+            <label for="number">Number of Ribs </label>
+            <input type="number" step="any" class="form-control" id="number" placeholder="Number" formControlName="number" autofocus>
+            <show-errors [control]="data.get('number')"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.webThickness.invalid && data.controls.webThickness.dirty}">
+            <!--webThickness-->
+            <label for="webThickness" [innerHTML]="'Web Thickness ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="webThickness" placeholder="Rib Web Thickness" formControlName="webThickness">
+            <show-errors [control]="data.controls.webThickness"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.webDepth.invalid && data.controls.webDepth.dirty}">
+            <!--webDepth-->
+            <label for="webDepth" [innerHTML]="'Web Depth ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="webDepth" placeholder="Rib Web Depth" formControlName="webDepth">
+            <show-errors [control]="data.controls.webDepth"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.flangeThick.invalid && data.controls.flangeThick.dirty}">
+            <!--flangeThick-->
+            <label for="flangeThick" [innerHTML]="'Flange Thickness ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="flangeThick" placeholder="Rib Flange Thickness" formControlName="flangeThick">
+            <show-errors [control]="data.controls.flangeThick"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.flangeWidth.invalid && data.controls.flangeWidth.dirty}">
+            <!--flangeWidth-->
+            <label for="flangeWidth" [innerHTML]="'Flange Width ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="flangeWidth" placeholder="Rib Flange Width" formControlName="flangeWidth">
+            <show-errors [control]="data.controls.flangeWidth"></show-errors>
+        </div>
+    </div>
+</div>

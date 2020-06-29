@@ -1,0 +1,67 @@
+<div *ngIf="!data">
+  <spinner></spinner>
+</div>
+<div *ngIf="data">
+<nb-card size="large" class="effect padded">
+  <div class="order-table">
+    <div class="table-header">
+      <div>Orders / Uses</div>
+      <!-- <div class="subtitle">By month</div> -->
+    </div>
+
+    <nb-tabset fullWidth style="height:350px; max-height: 350px; overflow-y: visible;">
+      <!-- maybe by month! -->
+      <nb-tab *ngFor="let month of data" [tabTitle]="month.title">
+        <div class="stats-month" *ngFor="let entry of month.orders">
+          <div>
+            <span class="date">{{ (entry.date | amFromUnix) | amDateFormat: 'DD' }}</span>
+            <span class="delta" [ngClass]="{ 'down': entry.down }">{{ entry.amount | number:'1.0-0' }}</span>
+          </div>
+          <div class="results">
+            <!-- <b>{{ order.dyns }}</b> DYN / <b>{{ order.cost }}</b> {{ order.token }} -->
+            <b>{{ entry.action.description }}</b>
+          </div>
+        </div>
+      </nb-tab>
+    </nb-tabset>
+  </div>
+
+  <div class="balance-container">
+    <div class="balance-header">
+      <div class="header-stats">
+        <div class="stats-block">
+          <div class="subtitle">Ordered</div>
+          <div>
+            <span class="value">{{ user.credit | number:'1.0-0' }} </span>
+            <span class="unit">DYN</span>
+          </div>
+        </div>
+
+        <div class="stats-block currency">
+          <div class="subtitle">Cost</div>
+          <div>
+            <span class="value">{{ cost | number:'1.2-2' }} </span>
+            <span class="unit">USD</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="balance-body">
+      <div class="stats-block">
+        <div>
+          <span class="value">{{ balance | number:'1.0-0' }}</span>
+          <span class="unit">DYN</span>
+        </div>
+        <div class="status" *ngIf="balance <= 0">
+          <p>{{user.username}}, You cant run any project now!</p>
+        </div>
+      </div>
+
+      <div class="balance-footer">
+        <button class="btn btn-primary" (click)="gotoPlans()">New Order</button>
+      </div>
+    </div>
+  </div>
+</nb-card>
+</div>

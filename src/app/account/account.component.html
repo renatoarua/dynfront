@@ -1,0 +1,90 @@
+<div class="row" *ngIf="errorMessage">
+    <div class="col-12">
+        <p class="alert alert-danger">{{errorMessage}}</p>
+    </div>
+</div>
+<div *ngIf="mode === '' && errorMessage === ''">
+    <spinner></spinner>
+</div>
+
+<div class="row" *ngIf="mode === 'view'">
+    <div class="col-sm-6">
+        <nb-card>
+            <nb-card-header><span>Your Information</span></nb-card-header>
+            <nb-card-body>
+                <div *ngIf="imageBackgroundStyle" class="user-picture image" [style.background-image]="imageBackgroundStyle"></div>
+                <div *ngIf="!imageBackgroundStyle" class="user-picture background">
+                    <div class="initials" *ngIf="showInitialsValue">
+                        {{ getInitials() }}
+                    </div>
+                </div>
+            
+                <div class="form-group-wrapper">
+                    <div class="form-group row">
+                        <label class="col-sm-12">Username</label>
+                        <div class="col-sm-12">
+                            <span class="help-text">{{user.username}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group-wrapper">
+                    <div class="form-group row">
+                        <label class="col-sm-12">Email</label>
+                        <div class="col-sm-12">
+                            <span class="help-text">{{user.email}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group-wrapper">
+                    <div class="form-group row">
+                        <label class="col-sm-12">Last Login</label>
+                        <div class="col-sm-12">
+                            <span class="help-text">{{(user.last_login_at | amFromUnix) | amDateFormat: 'YYYY-MM-DD HH:mm'}} ({{user.last_login_ip}}) </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group-wrapper">
+                    <div class="form-group row">
+                        <label class="col-sm-12">Balance</label>
+                        <div class="col-sm-12">
+                            <span class="help-text">DYN {{user.credit - user.debit}}</span>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-body>
+            <nb-card-footer>
+                <a [routerLink]="['/account', 'edit']" class="btn btn-primary">Update information</a>
+            </nb-card-footer>
+        </nb-card>
+    </div>
+    <div class="col-sm-6">
+        <nb-card>
+            <nb-card-header><span>Your Balance</span></nb-card-header>
+            <nb-card-body>
+                <!-- <balance [user]="user"></balance> -->
+                <token-usage [user]="user"></token-usage>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-sm-6">
+        <nb-card>
+            <nb-card-header><span>Your Orders</span></nb-card-header>
+            <nb-card-body>
+                <orders [user]="user"></orders>
+            </nb-card-body>
+            <nb-card-footer>
+                <a [routerLink]="['/plan']" class="btn btn-primary">New Order</a>
+            </nb-card-footer>
+        </nb-card>
+    </div>
+    <!-- <div class="col-sm-6">
+        <nb-card>
+            <nb-card-header><span>Your Settings</span></nb-card-header>
+            <nb-card-body>
+            </nb-card-body>
+        </nb-card>
+    </div> -->
+</div>

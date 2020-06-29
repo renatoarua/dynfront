@@ -1,0 +1,45 @@
+<h2 class="title">Visco Elastic Support</h2>
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- position -->
+            <label for="position" [innerHTML]="'Position ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="position" placeholder="Position" formControlName="position">
+            <div class="col-sm-12" [hidden]="data.controls.position.valid">
+                <span class="help-block help-block-error">Position is required</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- sheet -->
+    <div class="form-group-wrapper">
+        <sheet [data]="data.controls['sheet']"></sheet>
+    </div>
+
+    <div class="card-block">
+        <!-- list of rollerbearings -->
+        <div class="form-group-wrapper" formArrayName="rollerbearings">
+            <div class="new-item" *ngFor="let bearing of data.get('rollerbearings'); let i=index">
+                <div class="panel-heading">
+                  <span>Roller Bearing {{i + 1}}</span>
+                  <span (click)="removeRollerBearing(i)"> <i class="fa fa-times"></i></span>
+                </div>
+
+                <div class="panel-body" [formGroupName]="i">
+                    <shaft-roller [data]="data.controls['rollerbearings'].controls[i]" [isVes]="true"></shaft-roller>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <a class="btn" (click)="addRollerBearing()">
+                Add roller bearing <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        <div class="col-sm-12">
+            <button type="submit" class="btn" (click)="close()">Save</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div [formGroup]="data">
+    <div class="row">
+        <!-- <div class="col-sm-12"> -->
+            <!-- position -->
+        <!--     <label for="position" [innerHTML]="'Position ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="position" placeholder="Position" formControlName="position">
+            <div class="col-sm-12" [hidden]="data.controls.position.valid">
+                <span class="help-block help-block-error">Position is required</span>
+            </div>
+        </div> -->
+        <div class="col-sm-12">
+            <!-- viscosity -->
+            <label for="viscosity">Oil Viscosity (Pa.s) <span class="required">*</span></label>
+            <input type="number" class="form-control" id="viscosity" placeholder="Viscosity" formControlName="viscosity">
+            <div class="col-sm-12" [hidden]="data.controls.viscosity.valid">
+                <span class="help-block help-block-error">Viscosity is required</span>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <!-- diameter -->
+            <label for="diameter" [innerHTML]="'Diameter ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="diameter" placeholder="Diameter" formControlName="diameter">
+            <div class="col-sm-12" [hidden]="data.controls.diameter.valid">
+                <span class="help-block help-block-error">Diameter is required</span>
+            </div>
+        </div>
+
+         <div class="col-sm-12">
+            <!--length-->
+            <label for="length" [innerHTML]="'Length ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="length" placeholder="Inertia length" formControlName="length">
+            <div class="col-sm-12" [hidden]="data.controls.length.valid">
+                <span class="help-block help-block-error">Length is required</span>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <!-- radio -->
+            <label for="radio" [innerHTML]="'radio ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="radio" placeholder="Radio" formControlName="radio">
+            <div class="col-sm-12" [hidden]="data.controls.radio.valid">
+                <span class="help-block help-block-error">Radio is required</span>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <!-- load -->
+            <label for="load" [innerHTML]="'Load ('+_units.force.symbol+')'"> </label>
+            <input type="number" class="form-control" id="load" placeholder="Load" formControlName="load">
+        </div>
+
+    </div>
+</div>

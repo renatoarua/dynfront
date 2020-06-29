@@ -1,0 +1,63 @@
+<h2 class="title">Journal Bearing</h2>
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.mode.invalid && data.controls.mode.dirty}">
+            <label for="mode">Journal Insertion Mode</label>
+            <select class="form-control" id="mode" [value]="_mode" formControlName="mode" (change)="changeMode($event.target.value)" autofocus>
+                <option *ngFor="let mode of _modeTypes" [value]="mode.value" [selected]="">{{mode.label}}</option>
+            </select>
+            <show-errors [control]="data.controls.mode"></show-errors>
+        </div>
+        
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.position.invalid && data.controls.position.dirty}">
+            <!--position-->
+            <label for="position" [innerHTML]="'Position ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="position" placeholder="Position" formControlName="position">
+            <show-errors [control]="data.controls.position"></show-errors>
+        </div>
+    </div>
+    <!-- coeficients -->
+    <div *ngIf="_mode == 1">
+        <div class="card-block">
+            <!-- list of rotations -->
+            <div class="form-group-wrapper" formArrayName="rotations">
+                <div class="new-item" *ngFor="let rotation of data.controls['rotations'].controls; let i=index">
+                    <div class="panel-heading">
+                      <span>Spin {{i + 1}}</span>
+                      <span (click)="removeRotation(i)"> <i class="fa fa-times"></i></span>
+                    </div>
+                    <div class="panel-body" [formGroupName]="i">
+                        <shaft-rotation [data]="data.controls['rotations'].controls[i]"></shaft-rotation>
+                    </div>
+                </div>
+                
+            </div>
+        </div> <!-- card-block -->
+        <div class="col-sm-12">
+            <a class="btn sub-form" (click)="addRotation()">
+                Add spin <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </div>
+
+    <div *ngIf="_mode == 2">
+        <div class="card-block">
+            <!-- list of opt -->
+            <div class="form-group-wrapper" formArrayName="optimization">
+                <div class="new-item" *ngFor="let opt of data.controls['optimization'].controls; let i=index">
+                    <div class="panel-body" [formGroupName]="i">
+                        <journal-optimization [data]="data.controls['optimization'].controls[i]"></journal-optimization>
+                        <show-errors [control]="opt"></show-errors>
+                    </div>
+                </div>
+                
+            </div>
+        </div> <!-- card-block -->
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn" [disabled]="!data.valid" (click)="close()">Save</button>
+        </div>
+    </div>
+</div>

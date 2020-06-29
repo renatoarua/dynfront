@@ -1,0 +1,140 @@
+<h2 class="title">Roller Bearing</h2>
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-12" *ngIf="!vesbearing" [ngClass]="{'has-danger': data.controls.position.invalid && data.controls.position.dirty}">
+            <!--position-->
+            <label for="position" [innerHTML]="'Position ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="position" placeholder="Position" formControlName="position" autofocus>
+            <show-errors [control]="data.controls.position"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.mass.invalid && data.controls.mass.dirty}">
+            <!-- mass -->
+            <label for="mass" [innerHTML]="'Mass ('+_units.mass.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="mass" placeholder="Mass" formControlName="mass">
+            <show-errors [control]="data.controls.mass"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.inertia.invalid && data.controls.inertia.dirty}">
+            <!-- inertia -->
+            <label for="inertia" [innerHTML]="'Inertia ('+_units.inertia.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="inertia" placeholder="Inertia" formControlName="inertia">
+            <show-errors [control]="data.controls.inertia"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kxx.invalid && data.controls.kxx.dirty}">
+            <!--kxx-->
+            <label for="kxx" [innerHTML]="'Kxx ('+_units.stiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kxx" placeholder="Kxx" formControlName="kxx">
+            <show-errors [control]="data.controls.kxx"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kxz.invalid && data.controls.kxz.dirty}">
+            <!--kxz-->
+            <label for="kxz" [innerHTML]="'Kxz ('+_units.stiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kxz" placeholder="Kxz" formControlName="kxz">
+            <show-errors [control]="data.controls.kxz"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kzx.invalid && data.controls.kzx.dirty}">
+            <!--kzx-->
+            <label for="kzx" [innerHTML]="'Kzx ('+_units.stiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kzx" placeholder="Kzx" formControlName="kzx">
+            <show-errors [control]="data.controls.kzx"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kzz.invalid && data.controls.kzz.dirty}">
+            <!--kzz-->
+            <label for="kzz" [innerHTML]="'Kzz ('+_units.stiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kzz" placeholder="kzz" formControlName="kzz">
+            <show-errors [control]="data.controls.kzz"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.cxx.invalid && data.controls.cxx.dirty}">
+            <!--cxx-->
+            <label for="cxx" [innerHTML]="'Cxx ('+_units.damping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="cxx" placeholder="Cxx" formControlName="cxx">
+            <show-errors [control]="data.controls.cxx"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.cxz.invalid && data.controls.cxz.dirty}">
+            <!--cxz-->
+            <label for="cxz" [innerHTML]="'Cxz ('+_units.damping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="cxz" placeholder="Cxz" formControlName="cxz">
+            <show-errors [control]="data.controls.cxz"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.czx.invalid && data.controls.czx.dirty}">
+            <!--czx-->
+            <label for="czx" [innerHTML]="'Czx ('+_units.damping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="czx" placeholder="Czx" formControlName="czx">
+            <show-errors [control]="data.controls.czx"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.czz.invalid && data.controls.czz.dirty}">
+            <!--czz-->
+            <label for="czz" [innerHTML]="'Czz ('+_units.damping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="czz" placeholder="Czz" formControlName="czz">
+            <show-errors [control]="data.controls.czz"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.ktt.invalid && data.controls.ktt.dirty}">
+            <!--ktt-->
+            <label for="ktt" [innerHTML]="'Ktt ('+_units.tiltstiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="ktt" placeholder="Ktt" formControlName="ktt">
+            <show-errors [control]="data.controls.ktt"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.ktp.invalid && data.controls.ktp.dirty}">
+            <!--ktp-->
+            <label for="ktp" [innerHTML]="'Ktp ('+_units.tiltstiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="ktp" placeholder="Ktp" formControlName="ktp">
+            <show-errors [control]="data.controls.ktp"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kpt.invalid && data.controls.kpt.dirty}">
+            <!--kpt-->
+            <label for="kpt" [innerHTML]="'Kpt ('+_units.tiltstiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kpt" placeholder="Kpt" formControlName="kpt">
+            <show-errors [control]="data.controls.kpt"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kpp.invalid && data.controls.kpp.dirty}">
+            <!--kpp-->
+            <label for="kpp" [innerHTML]="'Kpp ('+_units.tiltstiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kpp" placeholder="kpp" formControlName="kpp">
+            <show-errors [control]="data.controls.kpp"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.ctt.invalid && data.controls.ctt.dirty}">
+            <!--ctt-->
+            <label for="ctt" [innerHTML]="'Ctt ('+_units.tiltdamping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="ctt" placeholder="Ctt" formControlName="ctt">
+            <show-errors [control]="data.controls.ctt"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.ctp.invalid && data.controls.ctp.dirty}">
+            <!--ctp-->
+            <label for="ctp" [innerHTML]="'Ctp ('+_units.tiltdamping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="ctp" placeholder="Ctp" formControlName="ctp">
+            <show-errors [control]="data.controls.ctp"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.cpt.invalid && data.controls.cpt.dirty}">
+            <!--cpt-->
+            <label for="cpt" [innerHTML]="'Cpt ('+_units.tiltdamping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="cpt" placeholder="Cpt" formControlName="cpt">
+            <show-errors [control]="data.controls.cpt"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.cpp.invalid && data.controls.cpp.dirty}">
+            <!--cpp-->
+            <label for="cpp" [innerHTML]="'Cpp ('+_units.tiltdamping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="cpp" placeholder="Cpp" formControlName="cpp">
+            <show-errors [control]="data.controls.cpp"></show-errors>
+        </div>
+    </div>
+    <div class="row" *ngIf="!vesbearing">
+        <div class="col-sm-12">
+            <button type="submit" class="btn" [disabled]="!data.valid" (click)="close()">Save</button>
+        </div>
+    </div>
+</div>

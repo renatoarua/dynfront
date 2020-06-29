@@ -1,0 +1,83 @@
+<nb-card>
+    <nb-card-body>
+        <div class="flex-centered col-xl-4 col-lg-6 col-md-8 col-sm-12">
+        	<h2 class="title">Sign Up</h2>
+
+            <div *ngIf="showConfirmation == false">
+            	<form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)" autocomplete="nope">
+                    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                        <div>
+                            <strong>Oh snap!</strong>
+                        </div>
+                        <div>{{errorMessage}}</div>
+                        <!-- <div *ngFor="let error of errors">{{ error }}</div> -->
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-danger': !isValid('email')}">
+                        <label for="email" class="sr-only">Email address</label>
+                        <input name="email" [formControl]="signupForm.controls['email']" pattern=".+@.+..+" id="input-email" class="form-control" placeholder="Email address" [class.form-control-danger]="!isValid('email')" autofocus>
+                        <small class="form-text error" *ngIf="!formErrors.email.valid">{{formErrors.email.message}}</small>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-danger': !isValid('username')}">
+                        <label for="username" class="sr-only">Username</label>
+                        <input name="username" [formControl]="signupForm.controls['username']" id="username" class="form-control" placeholder="Username" [class.form-control-danger]="!isValid('username')">
+                        <!-- pattern=".+@.+..+"  -->
+                        <small class="form-text error" *ngIf="!formErrors.username.valid">{{formErrors.username.message}}</small>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-danger': !isValid('password')}">
+                        <label for="password" class="sr-only">Password</label>
+                        <input name="password" [formControl]="signupForm.controls['password']" type="password" id="password" class="form-control" placeholder="Password" [class.form-control-danger]="!isValid('password')">
+                        <small class="form-text error" *ngIf="!formErrors.password.valid">{{formErrors.password.message}}</small>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-danger': !isValid('confirmPassword')}">
+                        <label for="confirmPassword" class="sr-only">Confirm Password</label>
+                        <input name="confirmPassword" [formControl]="signupForm.controls['confirmPassword']" type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" [class.form-control-danger]="!isValid('confirmPassword')">
+                        <small class="form-text error" *ngIf="!formErrors.confirmPassword.valid">{{formErrors.confirmPassword.message}}</small>
+                    </div>
+
+                    <!-- <div class="form-group accept-group col-sm-12">
+                        <nb-checkbox name="terms" [formControl]="signupForm.controls['terms']">
+                        	Agree to <a href="#" target="_blank"><strong>Terms &amp; Conditions</strong></a>
+                        </nb-checkbox>
+                    </div> -->
+                    <button [disabled]="submitted || !signupForm.valid" class="btn btn-block btn-hero-success" [class.btn-pulse]="submitted">Sign Up</button>
+                </form>
+            </div>
+            <div *ngIf="showConfirmation == true">
+                <h1>Thank you for signing up</h1>
+                <br/>
+                <p class="text-muted">
+                    To complete the registration process you must confirm your account. An email has been sent to
+                    {{signupForm.controls['email'].value}}.
+                    <br/>
+                    <br/> To confirm and activate your account please check your inbox and click on the link found
+                    in
+                    the email we just
+                    sent.
+                </p>
+                <div class="row">
+                    <div class="col-6">
+                        <a [routerLink]="['/auth/login']" class="btn btn-link px-0">Back to Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="links">
+                <!-- <ng-container *ngIf="socialLinks && socialLinks.length > 0">
+                    <small class="form-text">Or connect with:</small>
+                    <div class="socials">
+                        <ng-container *ngFor="let socialLink of socialLinks">
+                            <a *ngIf="socialLink.link" [routerLink]="socialLink.link" [attr.target]="socialLink.target" [attr.class]="socialLink.icon" [class.with-icon]="socialLink.icon">{{ socialLink.title }}</a>
+                            <a *ngIf="socialLink.url" [attr.href]="socialLink.url" [attr.target]="socialLink.target" [attr.class]="socialLink.icon" [class.with-icon]="socialLink.icon">{{ socialLink.title }}</a>
+                        </ng-container>
+                    </div>
+                </ng-container> -->
+                <small class="form-text">Already have an account? <a routerLink="/auth/login"><strong>Sign in</strong></a></small>
+            </div>
+
+        </div>
+    </nb-card-body>
+</nb-card>

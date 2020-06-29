@@ -1,0 +1,177 @@
+// themes - our custom or/and out of the box themes
+@import 'themes';
+
+// framework component themes (styles tied to theme variables)
+@import '~@nebular/theme/styles/globals';
+@import '~@nebular/auth/styles/all';
+
+// global app font size
+@import './font-size';
+
+// loading progress bar theme
+@import './pace.theme';
+
+@import './custom';
+
+/*@import './bootstrap-rtl';*/
+
+// install the framework and custom global styles
+@include nb-install() {
+
+  // framework global styles
+  @include nb-theme-global();
+  @include nb-auth-global();
+
+  // loading progress bar
+  @include ngx-pace-theme();
+
+  // fixed in rc.9 and can be removed after upgrade
+  .custom-control .custom-control-indicator {
+    border-radius: 50%; // TODO: quickfix for https://github.com/akveo/nebular/issues/275
+  }
+
+  .select-primary {
+    font-family: nb-theme(font-primary);
+    font-size: 1.1rem;
+    font-weight: nb-theme(font-weight-bold);
+    color: nb-theme(color-primary);
+    border: 1px solid nb-theme(color-primary);
+    background: transparent;
+
+    option {
+      background: lighten(nb-theme(card-bg), 5%);
+      color: nb-theme(card-fg-heading);
+    }
+  }
+
+  .hover-effect, nb-card.effect {
+    &:before {
+      top: 0;
+    }
+
+    &:after {
+      bottom: 0;
+    }
+
+    &:after, &:before {
+      content: " ";
+      display: block;
+      margin: 0 0px 21px;
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      left: 0;
+      z-index: 1;
+      background-color: rgba(nb-theme(color-primary),.01);
+      will-change: height,background-color;
+      -webkit-transition: height .24s cubic-bezier(.4,0,.2,1),background-color .2s cubic-bezier(.4,0,.2,1);
+      transition: height .24s cubic-bezier(.4,0,.2,1),background-color .2s cubic-bezier(.4,0,.2,1);
+    }
+
+    &:hover:after, &:hover:before {
+      height: 0;
+      background-color: rgba(nb-theme(color-primary),.34);
+    }
+
+    &.padded {
+      &:after, &:before {
+        margin: 0 15px 21px;
+        width: calc(100% - 30px);
+      }
+    }
+  }
+
+  .btn.btn-primary {
+    font-family: nb-theme(font-primary);
+    font-size: 1.1rem;
+    font-weight: nb-theme(font-weight-bold);
+    color: nb-theme(color-primary);
+    border: 1px solid nb-theme(color-primary);
+    cursor: pointer;
+    background: transparent;
+    white-space: unset;
+  }
+  .btn.btn-primary:hover {
+    background: lighten(nb-theme(card-bg), 5%);
+    border: 1px solid nb-theme(color-success);
+  }
+
+  .btn.btn-secondary {
+    font-family: nb-theme(font-secondary);
+    font-size: 1.1rem;
+    font-weight: nb-theme(font-weight-bold);
+    color: nb-theme(color-white);
+    border: 1px solid nb-theme(color-primary);
+    cursor: pointer;
+    background: transparent;
+    border-radius: 0;
+  }
+  .btn.btn-secondary:hover {
+    background: lighten(nb-theme(card-bg), 5%);
+    border: 1px solid nb-theme(color-primary);
+  }
+
+  .stripe-danger-right {
+    color: white;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(#ee5b37, 0.3),
+      rgba(#ee5b37, 0.3) 10px,
+      rgba(#ee5b37, 0.9) 10px,
+      rgba(#ee5b37, 0.9) 20px
+    );
+  }
+
+  .stripe-danger-left {
+    color: white;
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(#ee5b37, 0.3),
+      rgba(#ee5b37, 0.3) 10px,
+      rgba(#ee5b37, 0.9) 10px,
+      rgba(#ee5b37, 0.9) 20px
+    );
+  }
+
+  ::ng-deep nb-card-header {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: nb-theme(color-white);
+  }
+
+  @include keyframes(pulse-text-danger) {
+    from {
+      text-shadow: 0 0 10px #F7D2DD, 0 0 20px #F7D2DD, 0 0 30px #ee5b37, 0 0 40px #ee5b37, 0 0 50px #ee5b37, 0 0 60px #ee5b37, 0 0 70px #ee5b37;
+    }
+    to {
+      text-shadow: 0 0 20px #F7D2DD, 0 0 30px #FF3B0D, 0 0 40px #FF3B0D, 0 0 50px #FF3B0D, 0 0 60px #FF3B0D, 0 0 70px #FF3B0D, 0 0 80px #FF3B0D;
+    }
+  }
+
+  @include keyframes(pulse-danger) {
+    from { background-color: #BE3515; box-shadow: 0 0 9px #333; }
+    50% { background-color: #ee5b37; box-shadow: 0 0 18px #ee5b37; }
+    to { background-color: #FF3B0D; box-shadow: 0 0 9px #333; }
+  }
+
+  @include keyframes(pulse-warning) {
+    from { background-color: #BA7018; box-shadow: 0 0 9px #333; }
+    50% { background-color: #ee9a37; box-shadow: 0 0 18px #ee9a37; }
+    to { background-color: #FFA132; box-shadow: 0 0 9px #333; }
+  }
+
+  @include keyframes(pulse-text-success) {
+    from {
+      text-shadow: 0 0 10px #e3f7d2, 0 0 20px #e3f7d2, 0 0 30px #18b797, 0 0 40px #18b797, 0 0 50px #18b797, 0 0 60px #18b797, 0 0 70px #18b797;
+    }
+    to {
+      text-shadow: 0 0 20px #e3f7d2, 0 0 30px #3ECEB2, 0 0 40px #3ECEB2, 0 0 50px #3ECEB2, 0 0 60px #3ECEB2, 0 0 70px #3ECEB2, 0 0 80px #3ECEB2;
+    }
+  }
+
+  @include keyframes(pulse-success) {
+    from { background-color: #008E72; box-shadow: 0 0 9px #333; }
+    50% { background-color: #18b797; box-shadow: 0 0 18px #18b797; }
+    to { background-color: #3ECEB2; box-shadow: 0 0 9px #333; }
+  }
+};

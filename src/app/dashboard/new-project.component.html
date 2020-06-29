@@ -1,0 +1,74 @@
+<nb-card>
+  <nb-card-header>New Project</nb-card-header>
+  <nb-card-body>
+    <div [formGroup]="data">
+      <!-- project -->
+      <div class="form-group-wrapper" [formGroup]="data.controls['project']">
+        <div class="form-group row">
+          <div class="col-sm-9">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Project name" formControlName="name">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <label>Analysis Ranges</label>
+        </div>
+        <div class="col-sm-3">
+          <label>Initial Speed (rpm)</label>
+          <input type="number" class="form-control" name="speedMin" id="speedMin" placeholder="Min speed" formControlName="speedMin">
+        </div>
+        <div class="col-sm-3">
+          <label>Final Speed (rpm)</label>
+          <input type="number" class="form-control" name="speedMax" id="speedMax" placeholder="Max speed" formControlName="speedMax">
+        </div>
+        <div class="col-sm-3">
+          <label>Maximum Amplitude (mm)</label>
+          <input type="number" class="form-control" name="ampMax" id="ampMax" placeholder="Max amplitude" formControlName="ampMax">
+        </div>
+      </div>
+
+      <!-- list of settings -->
+      <div class="form-group row">
+        <label class="col-sm-3">System Options</label>
+        <div class="col-sm-9 checkbox-column">
+          <nb-checkbox *ngFor="let opt of settingData.controls; let i=index"
+            [value]="_systemOptions[i].selected"
+            name="settings"
+            [formControl]="opt">
+            {{_systemOptions[i].label}}
+          </nb-checkbox>
+        </div>
+      </div>
+
+      <!-- list of results -->
+      <div class="form-group row">
+        <label class="col-sm-3">Result Options</label>
+        <div class="col-sm-9 checkbox-column">
+          <nb-checkbox *ngFor="let res of resultData.controls; let i=index"
+            [value]="_resultOptions[i].selected"
+            name="results"
+            [formControl]="res">
+            {{_resultOptions[i].label}}
+          </nb-checkbox>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="offset-sm-3 col-sm-9">
+          <button type="submit" class="btn btn-primary" (click)="close()">Save</button>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+<!-- 
+<div class="field" *ngFor="let res of data.controls['results'].controls; let i=index">
+            <div class="ui radio checkbox">
+              <input type="checkbox" name="results" [formControl]="res" >
+              <label>{{_resultOptions[i].label}}</label>
+            </div>
+          </div>
+ -->

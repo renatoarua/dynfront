@@ -1,0 +1,97 @@
+<div class="order-container" *ngIf="plans">
+    <div class="row">
+        <div class="col-sm-4">
+            <nb-card class="pricing ">
+                <nb-card-header>
+                    <span>{{plans[0].name}}</span>
+                </nb-card-header>
+                <nb-card-body>
+                    <span class="price percent">{{plans[0].price}}%</span>
+                    <ul class="features">
+                        <li>5 calculations/day</li>
+                        <li>No maximum complexity</li>
+                        <li>All available results</li>
+                    </ul>
+                </nb-card-body>
+                <nb-card-footer>
+                    <p>Contact Us</p>
+                    <!-- <button class="btn btn-primary" (click)="selectPlan(plans[0].id)">Select</button> -->
+                </nb-card-footer>
+            </nb-card>
+        </div>
+        <div class="col-sm-4">
+            <nb-card class="pricing ">
+                <nb-card-header>
+                    <span>{{plans[1].name}}</span>
+                </nb-card-header>
+                <nb-card-body>
+                    <span class="price monthly">{{plans[1].price}}</span>
+                    <ul class="features">
+                        <li>5 calculations/day</li>
+                        <li>No maximum complexity</li>
+                        <li>All available results</li>
+                    </ul>
+                </nb-card-body>
+                <nb-card-footer>
+                    <button class="btn btn-primary" (click)="selectPlan(1)">Select</button>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+        <div class="col-sm-4">
+            <nb-card class="pricing ">
+                <nb-card-header>
+                    <span>{{plans[2].name}}</span>
+                </nb-card-header>
+                <nb-card-body>
+                    <span class="price monthly">{{plans[2].price}}</span>
+                    <ul class="features">
+                        <li>No calculation limit</li>
+                        <li>No maximum complexity</li>
+                        <li>All available results</li>
+                    </ul>
+                </nb-card-body>
+                <nb-card-footer>
+                    <button class="btn btn-primary" (click)="selectPlan(2)">Select</button>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+        <div class="col-sm-4">
+            <nb-card class="pricing ">
+                <nb-card-header>
+                    <span>{{plans[3].name}}</span>
+                </nb-card-header>
+                <nb-card-body>
+                    <span class="price yearly">{{plans[3].price}}</span>
+                    <ul class="features">
+                        <li>5 calculations/day</li>
+                        <li>No maximum complexity</li>
+                        <li>All available results</li>
+                    </ul>
+                </nb-card-body>
+                <nb-card-footer>
+                    <button class="btn btn-primary" (click)="selectPlan(3)">Select</button>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+        <div class="col-sm-4">
+            <nb-card class="pricing">
+                <nb-card-header>
+                    <span>{{plans[4].name}}</span>
+                </nb-card-header>
+                <nb-card-body>
+                    <span class="price yearly">{{plans[4].price}}</span>
+                    <ul class="features">
+                        <!-- <li *ngFor="let feat of plans[5].features">{{feat}}</li> -->
+                        <li>No calculation limit</li>
+                        <li>No maximum complexity</li>
+                        <li>All available results</li>
+                    </ul>
+                </nb-card-body>
+                <nb-card-footer>
+                    <button class="btn btn-primary" (click)="selectPlan(4)">Select</button>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+    </div>
+
+</div>

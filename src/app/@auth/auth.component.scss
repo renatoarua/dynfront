@@ -1,0 +1,59 @@
+@import '../@theme/styles/themes';
+
+
+@include nb-install-component() {
+  $auth-layout-padding: 2.5rem;
+  
+  /deep/ nb-layout .layout {
+    background: nb-theme(url-bg-glow) repeat center top;
+    background-attachment: fixed;
+
+    &::before {
+      content: '';
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: nb-theme(url-bg) no-repeat center center;
+      background-size: cover;
+      will-change: transform;
+      z-index: -1;
+    }
+  }
+
+  /deep/ nb-card {
+    background: nb-theme(card-bg-gradient);
+    border: 2px solid nb-theme(color-bg);
+    height: calc(100vh - 2 * #{$auth-layout-padding});
+    margin: 0;
+
+    nb-card-header {
+      border: unset;
+    }
+
+    nb-card-body {
+      display: flex;
+      .flex-centered {
+        margin: auto;
+      }
+    }
+
+    nb-card-footer {
+      border: unset;
+    }
+
+  }
+
+  // TODO rewrite when develop responsive
+  @media (max-width: 550px) {
+    /deep/ nb-layout .layout .layout-container .content .columns nb-layout-column {
+      padding: 0;
+    }
+
+    /deep/ nb-card {
+      border-radius: 0;
+      height: 100vh;
+    }
+  }
+}

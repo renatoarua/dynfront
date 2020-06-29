@@ -1,0 +1,27 @@
+<h2 class="title">Unbalance Plane</h2>
+<div class="result-form" [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.position.invalid && data.controls.position.dirty}">
+            <!--position-->
+            <label for="position">Position <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="position" placeholder="Position" formControlName="position">
+            <p class="unit">({{_units.length.symbol}})</p>
+            <show-errors [control]="data.controls.position"></show-errors>
+        </div>
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.unbalance.invalid && data.controls.unbalance.dirty}">
+            <!--unbalance-->
+            <label for="unbalance">Unbalance Force <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="unbalance" placeholder="Unbalance" formControlName="unbalance">
+            <p class="unit">({{_units.unbalance.symbol}})</p>
+            <show-errors [control]="data.controls.unbalance"></show-errors>
+        </div>
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.phase.invalid && data.controls.phase.dirty}">
+            <!--phase-->
+            <label for="phase">Phase <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="phase" placeholder="Phase" formControlName="phase">
+            <p class="unit">(°, degrees)</p>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,4 @@
+<nb-card size="large">
+  <twoviewer [model]="_project" (select)="select($event)"></twoviewer>
+  <dyn-node [model]="selected" [editing]="editing" (duplicate)="duplicateNode($event)" (delete)="deleteNode($event)" (edit)="editNode($event)"></dyn-node>
+</nb-card>

@@ -1,0 +1,406 @@
+<header class="navbar">
+    <div class="container-fluid">
+        <button class="navbar-toggler hidden-lg-up" type="button" mobile-nav-toggle>&#9776;</button>
+        <a class="navbar-brand" href="#"></a>
+
+        <ul class="nav navbar-nav hidden-md-down">
+            <li class="nav-item">
+                <a class="nav-link navbar-toggler sidebar-toggle" href="#">&#9776;</a>
+            </li>
+            <li class="nav-item px-1">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']">Dashboard</a>
+            </li>
+            <li class="nav-item px-1">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/staff']">Staffs</a>
+            </li>
+            <li class="nav-item px-1">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/user']">Users</a>
+            </li>
+            <li class="nav-item px-1">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/setting']">Settings</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav float-xs-right">
+
+            <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
+                    <span class="hidden-md-down">{{userData.username}} ({{userData.roleLabel}})</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" dropdownMenu aria-labelledby="simple-dropdown">
+                    <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/logout']"><i class="icon-lock-open"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</header>
+
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
+            </li>
+
+            <li class="divider"></li>
+
+            <li class="nav-item nav-dropdown" routerlinkactive="open">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-cog"></i> Options</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" [routerLink]="['/rotordyn/list']"><i class="fa fa-list-ul"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" [routerLink]="['/rotordyn/create']"><i class="icon-puzzle"></i> New</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="save()"><i class="icon-puzzle"></i> Save</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="reset()"><i class="icon-puzzle"></i> Reset</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="divider"></li>
+
+            <li class="nav-item nav-dropdown" routerlinkactive="open">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-cog"></i> Experimental</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#"><i class="icon-puzzle"></i> Future..</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#"><i class="icon-puzzle"></i> Development...</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="divider"></li>
+
+            <li class="nav-item nav-dropdown" routerlinkactive="open">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-arrow-left"></i> Pre Processing</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="configShaft()" style="cursor: pointer;"><i class="fa fa-list-ul"></i> Shaft</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="configDiscs()" style="cursor: pointer;"><i class="fa fa-list-ul"></i> Discs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="configInertias()" style="cursor: pointer;"><i class="fa fa-list-ul"></i> Inertias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="configBearings()" style="cursor: pointer;"><i class="fa fa-list-ul"></i> Bearings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="configFoundations()" style="cursor: pointer;"><i class="fa fa-list-ul"></i> Foundations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="configDynamics()" style="cursor: pointer;"><i class="fa fa-list-ul"></i> Unbalanced Force</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="configStatics()" style="cursor: pointer;"><i class="fa fa-list-ul"></i> Constant Speed Force</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="configMesh()" style="cursor: pointer;"><i class="fa fa-list-ul"></i> E.F. Mesh</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" (click)="configOptions()" style="cursor: pointer;"><i class="fa fa-list-ul"></i> Analysis Options</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="divider"></li>
+
+            <li class="nav-item nav-dropdown" routerlinkactive="open">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-arrow-right"></i> Vibration Control</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/buttons"><i class="fa fa-list-ul"></i> VE. Supports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/buttons"><i class="fa fa-list-ul"></i> VE. Absorbers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/buttons"><i class="fa fa-list-ul"></i> Balancing Opt.</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="divider"></li>
+
+            <li class="nav-item nav-dropdown" routerlinkactive="open">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-arrow-right"></i> Post Processing</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/buttons"><i class="fa fa-list-ul"></i> Static Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/social-buttons"><i class="fa fa-list-ul"></i> Campbell Diagram</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/social-buttons"><i class="fa fa-list-ul"></i> Log. Decrement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/cards"><i class="fa fa-list-ul"></i> Vibration Modes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/tables"><i class="fa fa-list-ul"></i> Stiffness Map</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/switches"><i class="fa fa-list-ul"></i> Time Response</a>
+                    </li>
+
+
+                    <li class="nav-item nav-dropdown" routerlinkactive="open">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-arrow-right"></i> Frequency Response</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" routerlinkactive="active" href="#/components/buttons"><i class="fa fa-list-ul"></i> Unbalanced Response</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerlinkactive="active" href="#/components/buttons"><i class="fa fa-list-ul"></i> Constant Spin Response</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#/components/tables"><i class="fa fa-list-ul"></i> Torsional Analysis</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="divider"></li>
+
+            <li class="nav-item nav-dropdown" routerlinkactive="open">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-th"></i> Reports</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#"><i class="fa fa-list-ul"></i> All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerlinkactive="active" href="#"><i class="fa fa-list-ul"></i> New</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" href="#"><i class="icon-question"></i> Help</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/logout']"><i class="icon-lock-open"></i> Logout</a>
+            </li>
+
+        </ul>
+    </nav>
+</div>
+
+<!-- Main content -->
+<main class="main">
+
+    <!-- Breadcrumb -->
+    <ol class="breadcrumb">
+        <!-- <breadcrumbs></breadcrumbs> -->
+
+        <!-- Breadcrumb Menu-->
+        <li class="breadcrumb-menu">
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
+                <a class="btn btn-secondary" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+                <a class="btn btn-secondary" [routerLink]="['/setting']"><i class="icon-settings"></i> &nbsp;Settings</a>
+            </div>
+        </li>
+
+    </ol>
+
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+        <div style="margin-top:20px;" *ngIf="_project">
+          <div>_form details:-</div>
+          <pre>Is _form valid?: <br>{{_form.valid | json}}</pre>
+          <pre>form value: <br>{{_form.value | json}}</pre>
+        </div>
+    </div>
+    <!-- /.conainer-fluid -->
+</main>
+
+<footer class="footer">
+    <span class="text-left">
+        <a href="http://www.dyntechnologies.com.br">DYN Technologies</a> &copy; 2013.
+    </span>
+    <span class="float-xs-right">
+        Powered by <a href="http://coreui.io">CoreUI</a>. Customized by Dyntechnologies &reg;.
+    </span>
+</footer>
+
+<shaft-modal  #shaftModal [title]="'Shaft'"> 
+<div class="modal-body" *ngIf="_project">
+    <div class="row">
+        <div class="col-sm-12">
+            <form [formGroup]="_form" novalidade>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Machine - {{_project?.machineId}}</strong><br />
+                            <small>Add Session</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+
+                        <!-- list of sessions -->
+                        <div formArrayName="sessions">
+                            <div *ngFor="let session of _form.controls.sessions.controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Session {{i + 1}}</span>
+                                  <span *ngIf="_form.controls.sessions.controls.length > 1" (click)="removeSession(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-session [group]="_form.controls.sessions.controls[i]"></shaft-session>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div> <!-- ./card-block -->
+
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-sm btn-warning" (click)="addSession()">
+                                    Add another session <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <button (click)="closeShaft()" class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i> Close</button>
+                            </div>
+                            <!-- <div *ngIf="_errorMessage" class="col-xs-12 error-block mt-h">
+                                <div class="alert alert-danger">{{_errorMessage}}</div>
+                            </div> -->
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</shaft-modal>
+
+
+<shaft-modal  #discModal [title]="'Discs'"> 
+<div class="modal-body" *ngIf="_project">
+    <div class="row">
+        <div class="col-sm-12">
+            <form [formGroup]="_form" novalidade>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Machine - {{_project?.machineId}}</strong><br />
+                            <small>Add Discs</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+
+                        <!-- list of discs -->
+                        <div formArrayName="discs">
+                            <div *ngFor="let disc of _form.controls.discs.controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Disc {{i + 1}}</span>
+                                  <span *ngIf="_form.controls.discs.controls.length > 1" (click)="removeDisc(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-disc [group]="_form.controls.discs.controls[i]"></shaft-disc>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div> <!-- ./card-block -->
+
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-sm btn-warning" (click)="addDisc()">
+                                    Add another disc <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <button (click)="closeDisc()" class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i> Close</button>
+                            </div>
+                            <!-- <div *ngIf="_errorMessage" class="col-xs-12 error-block mt-h">
+                                <div class="alert alert-danger">{{_errorMessage}}</div>
+                            </div> -->
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</shaft-modal>
+
+<shaft-modal  #bearingModal [title]="'Roller Bearings'"> 
+<div class="modal-body" *ngIf="_project">
+    <div class="row">
+        <div class="col-sm-12">
+            <form [formGroup]="_form" novalidade>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Machine - {{_project?.machineId}}</strong><br />
+                            <small>Add Roller Bearings</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+
+                        <!-- list of rollerbearings -->
+                        <div formArrayName="rollerbearings">
+                            <div *ngFor="let bearing of _form.controls.rollerbearings.controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Bearings {{i + 1}}</span>
+                                  <span *ngIf="_form.controls.rollerbearings.controls.length > 1" (click)="removeBearing(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-roller [group]="_form.controls.rollerbearings.controls[i]"></shaft-roller>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div> <!-- ./card-block -->
+
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-sm btn-warning" (click)="addBearing()">
+                                    Add another bearing <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <button (click)="closeBearing()" class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i> Close</button>
+                            </div>
+                            <!-- <div *ngIf="_errorMessage" class="col-xs-12 error-block mt-h">
+                                <div class="alert alert-danger">{{_errorMessage}}</div>
+                            </div> -->
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</shaft-modal>

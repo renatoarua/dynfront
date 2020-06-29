@@ -1,0 +1,30 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "commonjs",
+    "types": [],
+    "paths": {
+      "@angular/*": [
+        "../node_modules/@angular/*"
+      ],
+      "@nebular/*": [
+        "../node_modules/@nebular/*"
+      ],
+      "rxjs/*": ["../node_modules/rxjs/*"]
+    }
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ],
+  "angularCompilerOptions": {
+    "entryModule": "app/app.server.module#AppServerModule"
+  },
+  "include": [
+    "*.ts",
+    "**/*.ts",
+    "../node_modules/@nebular/**/*.ts"
+  ]
+}

@@ -1,0 +1,59 @@
+<div class="order-container">
+    <div class="row">
+        <div class="col-sm-4">&nbsp;</div>
+        <div class="col-sm-4">
+            <nb-card class="pricing" *ngIf="cart">
+                <nb-card-header>
+                    <span>{{cart.plan.name}}</span>
+                </nb-card-header>
+                <nb-card-body>
+                    <span class="price {{cart.plan.billing}}">{{paymentAmount}}</span>
+                    <ul class="features">
+                        <li>&nbsp;</li>
+                        <li>5 calculations/day</li>
+                        <li>10 nodes maximum</li>
+                        <li>4 results maximum</li>
+                    </ul>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col-sm-4">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">&nbsp;</div>
+        <div class="col-sm-4">
+            <div>
+                <ngx-braintree
+                    [getClientToken]="getClientTokenFunction"
+                    [createPurchase]="createPurchase"
+                    (paymentStatus)="onPaymentStatus($event)"
+                    [chargeAmount]="1.0"
+                    [enablePaypalCheckout] = "true"
+                    [currency]="'USD'">
+                </ngx-braintree>
+            </div>
+            <nb-accordion>
+                <nb-accordion-item>
+                    <nb-accordion-item-header>
+                        <div class="left">
+                            <span>Bitpay</span>
+                        </div>
+                        <div class="right">
+                            <img src="https://www.bitpay.com/cdn/en_US/currency-mark-std.svg" alt="BitPay Supported Currencies (BTC, BCH)"/>
+                        </div>
+                    </nb-accordion-item-header>
+                    <nb-accordion-item-body>
+                        <form action="https://bitpay.com/checkout" method="post" >
+                            <input type="hidden" name="action" value="checkout" />
+                            <input type="hidden" name="posData" value="" />
+                            <input type="hidden" name="data" value="ICcptpUMLsSRm1js9Ec6eiPa2RWHUsJmNLHTXPt57guxCcXb2909L88BuDVCNREEW08UcDzd18PTAoDIvGfIMeLI6uFh/sTD2YBWTE/Oj4TQpl4sI7KL45Vreh5owD6kg0J8Kbumo/qkDJvbm0PAb9SwfSN21vRPUhUoBKs4KQKS05IaYZYDBpULUxeEEuKGaeqnrE+ygnN9RwBSuqDAM9ph0eMd4XNoBWAIRWu9IQC3hMwtgBKNN0MfuRyM4CBaYOirfLheajh9+nRQDZhqoA==" />
+                            <input type="image" src="https://www.bitpay.com/cdn/en_US/bp-btn-pay.svg" name="submit" style="width:168px;" alt="BitPay, the easy way to pay with bitcoins." >
+                        </form>
+                    </nb-accordion-item-body>
+                </nb-accordion-item>
+            </nb-accordion>
+        </div>
+        <div class="col-sm-4">&nbsp;</div>
+    </div>
+</div>
+

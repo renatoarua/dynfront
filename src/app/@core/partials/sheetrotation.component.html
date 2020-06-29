@@ -1,0 +1,36 @@
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-6">
+	       <!-- thickness -->
+            <label for="thickness" [innerHTML]="'Thickness ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="thickness" placeholder="Thickness" formControlName="thickness">
+            <div class="col-sm-12" [hidden]="data.controls.thickness.valid">
+                <span class="help-block help-block-error">Thickness is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- meanRadius -->
+            <label for="meanRadius" [innerHTML]="'Mean Radius ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="meanRadius" placeholder="Mean Radius" formControlName="meanRadius">
+            <div class="col-sm-12" [hidden]="data.controls.meanRadius.valid">
+                <span class="help-block help-block-error">Mean Radius is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <!-- radius -->
+            <label for="radius" [innerHTML]="'Spheric Radius ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="radius" placeholder="Spheric Radius" formControlName="radius">
+            <div class="col-sm-12" [hidden]="data.controls.radius.valid">
+                <span class="help-block help-block-error">Spheric Radius is required</span>
+            </div>
+        </div>
+        <div class="col-sm-6" *ngIf="_showExtra">
+            <!-- inertia -->
+            <label for="inertia" [innerHTML]="'Inertia ('+_units.inertia.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" class="form-control" id="inertia" placeholder="Inertia" formControlName="inertia">
+            <div class="col-sm-12" [hidden]="data.controls.inertia.valid">
+                <span class="help-block help-block-error">Inertia is required</span>
+            </div>
+        </div>
+    </div>
+</div>

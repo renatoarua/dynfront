@@ -1,0 +1,90 @@
+<h2 class="title">Unbalance Response</h2>
+<div *ngIf="!length">
+    <h2>No section dimensions!</h2>
+</div>
+<div class="result-form" [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-3" [ngClass]="{'has-danger': data.controls.initialSpin.invalid && data.controls.initialSpin.dirty}">
+            <!--initialSpin-->
+            <label for="initialSpin">Initial Spin <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="initialSpin" placeholder="Initial Spin Speed" formControlName="initialSpin">
+            <p class="unit">(rpm)</p>
+            <show-errors [control]="data.controls.initialSpin"></show-errors>
+        </div>
+        <div class="col-sm-3" [ngClass]="{'has-danger': data.controls.finalSpin.invalid && data.controls.finalSpin.dirty}">
+            <!--finalSpin-->
+            <label for="finalSpin">Final Spin <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="finalSpin" placeholder="Final Spin Speed" formControlName="finalSpin">
+            <p class="unit">(rpm)</p>
+            <show-errors [control]="data.controls.finalSpin"></show-errors>
+        </div>
+        <div class="col-sm-3" [ngClass]="{'has-danger': data.controls.steps.invalid && data.controls.steps.dirty}">
+            <!--steps-->
+            <label for="steps">Steps <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="steps" placeholder="Number of Steps" formControlName="steps">
+            <p class="unit">(u.)</p>
+            <show-errors [control]="data.controls.steps"></show-errors>
+        </div>
+        <div class="col-sm-3" [ngClass]="{'has-danger': data.controls.modes.invalid && data.controls.modes.dirty}">
+            <!--modes-->
+            <label for="modes">Number of Modes <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="modes" placeholder="Number of Modes" formControlName="modes">
+            <p class="unit">(u.)</p>
+            <show-errors [control]="data.controls.modes"></show-errors>
+        </div>
+    </div>
+
+    <!-- responses -->
+    <div class="form-group-wrapper">
+        <div class="form-group" formArrayName="responses">
+            <div *ngFor="let bearing of data.get('responses'); let i=index">
+                <div class="panel-heading">
+                  <span>Response Point {{i + 1}}</span>
+                  <span (click)="removeResponse(i)"> <i class="fa fa-times"></i></span>
+                </div>
+
+                <div class="panel-body" [formGroupName]="i">
+                    <result-response [data]="data.controls['responses'].controls[i]"></result-response>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <show-errors [control]="data.controls.responses"></show-errors>
+            <button class="btn btn-info" (click)="addResponse()">
+                Add Response Point <i class="fa fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- phases -->
+    <div class="form-group-wrapper">
+        <div class="form-group" formArrayName="phases">
+            <div *ngFor="let bearing of data.get('phases'); let i=index">
+                <div class="panel-heading">
+                  <span>Unbalance Force {{i + 1}}</span>
+                  <span (click)="removePhase(i)"> <i class="fa fa-times"></i></span>
+                </div>
+
+                <div class="panel-body" [formGroupName]="i">
+                    <result-phase [data]="data.controls['phases'].controls[i]"></result-phase>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <show-errors [control]="data.controls.phases"></show-errors>
+            <button class="btn btn-info" (click)="addPhase()">
+                Add Unbalance Force <i class="fa fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-info" (click)="close()">Save</button>
+        </div>
+    </div>
+</div>

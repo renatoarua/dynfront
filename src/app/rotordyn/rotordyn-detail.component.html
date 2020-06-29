@@ -1,0 +1,119 @@
+<div class="row" *ngIf="_errorMessage">
+    <nb-alert status="danger">
+      {{_errorMessage}}
+    </nb-alert>
+</div>
+
+<div class="animated fadeIn" *ngIf="_project as project; else loading">
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- <dyn-svg [model]="project" [editing]="false"></dyn-svg> -->
+      <nb-card size="large">
+        <nb-card-body>
+          <twoviewer [model]="project"></twoviewer>
+        </nb-card-body>
+        <nb-card-footer>
+          <div class="actions-grid">
+            <dyn-button [status]="show['line'] ? 'warning' : ''" (onclick)="selectChart('line')">
+              <span class="name">Line</span>
+              <i class="icon fa fa-plus"></i>
+            </dyn-button>
+            <dyn-button [status]="show['campbell'] ? 'warning' : ''" (onclick)="selectChart('campbell')">
+              <span class="name">Campbell</span>
+              <i class="icon fa fa-plus"></i>
+            </dyn-button>
+            <dyn-button [status]="show['stiffness'] ? 'warning' : ''" (onclick)="selectChart('stiffness')">
+              <span class="name">Stiffnes Map</span>
+              <i class="icon fa fa-plus"></i>
+            </dyn-button>
+            <dyn-button [status]="show['modes'] ? 'warning' : ''" (onclick)="selectChart('modes')">
+              <span class="name">Modes</span>
+              <i class="icon fa fa-plus"></i>
+            </dyn-button>
+            <dyn-button [status]="show['torsional'] ? 'warning' : ''" (onclick)="selectChart('torsional')">
+              <span class="name">Torsional</span>
+              <i class="icon fa fa-plus"></i>
+            </dyn-button>
+            <dyn-button [status]="show['constant'] ? 'warning' : ''" (onclick)="selectChart('constant')">
+              <span class="name">Constant</span>
+              <i class="icon fa fa-plus"></i>
+            </dyn-button>
+            <dyn-button [status]="show['unbalance'] ? 'warning' : ''" (onclick)="selectChart('unbalance')">
+              <span class="name">Unbalance</span>
+              <i class="icon fa fa-plus"></i>
+            </dyn-button>
+            <dyn-button [status]="show['time'] ? 'warning' : ''" (onclick)="selectChart('time')">
+              <span class="name">Time</span>
+              <i class="icon fa fa-plus"></i>
+            </dyn-button>
+          </div>
+        </nb-card-footer>
+      </nb-card>
+    </div>
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>{{title}}</span>
+        </nb-card-header>
+        <nb-card-body>
+          {{description}}
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span></span>
+        </nb-card-header>
+        <nb-card-body>
+          <div *ngIf="show['line']">
+            <dyn-line-chart [project]="project.projectId"></dyn-line-chart>
+          </div>
+          <div *ngIf="show['campbell']">
+            <div *ngIf="project.projectsetting.systemoptions.ves == false">
+              <dyn-campbell-chart [project]="project.projectId"></dyn-campbell-chart>
+            </div>
+            <div *ngIf="!(project.projectsetting.systemoptions.ves == false)">
+              <dyn-campbell3d-chart [project]="project.projectId"></dyn-campbell3d-chart>
+            </div>
+          </div>
+          <div *ngIf="show['stiffness']">
+            <dyn-stiffness-chart [project]="project.projectId"></dyn-stiffness-chart>
+          </div>
+          <div *ngIf="show['modes']">
+            <dyn-modes-chart [project]="project.projectId"></dyn-modes-chart>
+          </div>
+          <div *ngIf="show['unbalance']">
+            <dyn-unbalance-chart [project]="project.projectId"></dyn-unbalance-chart>
+          </div>
+          <div *ngIf="show['constant']">
+            <dyn-constant-chart [project]="project.projectId"></dyn-constant-chart>
+          </div>
+          <div *ngIf="show['torsional']">
+            <dyn-torsional-chart [project]="project.projectId"></dyn-torsional-chart>
+          </div>
+          <div *ngIf="show['time']">
+            <dyn-time-chart [project]="project.projectId"></dyn-time-chart>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <!-- <div class="col-sm-12">
+      <nb-card>
+        <nb-card-header>
+          <span>Calculation Log</span>
+        </nb-card-header>
+        <nb-card-body>
+          
+        </nb-card-body>
+      </nb-card>
+    </div> -->
+
+  </div>
+</div>
+
+<ng-template #loading>
+  <spinner></spinner>
+</ng-template>

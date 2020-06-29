@@ -1,0 +1,106 @@
+<h2 class="title">Section</h2>
+<div [formGroup]="_data">
+    <div class="row">
+        <!-- <div class="col-sm-12">
+            <num-input formControlName="position" [control]="_data.controls.position" [name]="position" [title]="'Length ('+_units.length.symbol+')'" [auto]="true"></num-input>
+        </div> -->
+        <div class="col-sm-12" [ngClass]="{'has-danger': _data.controls.position.invalid && _data.controls.position.dirty}">
+            <!--position-->
+            <label for="position" [innerHTML]="'Length ('+_units.length.symbol+')'"><span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="position" placeholder="Length (mm)" formControlName="position" autofocus>
+            <show-errors [control]="_data.controls.position"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': _data.controls.externalDiameter.invalid && _data.controls.externalDiameter.dirty}">
+            <!--externalDiameter-->
+            <label for="externalDiameter" [innerHTML]="'External Diameter ('+_units.length.symbol+')'"><span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="externalDiameter" placeholder="External Diameter (mm)" formControlName="externalDiameter">
+            <show-errors [control]="_data.controls.externalDiameter"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': _data.controls.internalDiameter.invalid && _data.controls.internalDiameter.dirty}">
+            <!--internalDiameter-->
+            <label for="internalDiameter" [innerHTML]="'Internal Diameter ('+_units.length.symbol+')'"><span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="internalDiameter" placeholder="Internal Diameter (mm)" formControlName="internalDiameter">
+            <show-errors [control]="_data.controls.internalDiameter"></show-errors>
+        </div>
+
+        <!-- <div class="col-sm-12"> -->
+            <!--material-->
+        <!--     <select class="form-control" id="material" formControlName="materialId">
+                <option *ngFor="let mat of _materials" [value]="mat.value" [selected]="">{{mat.label}}</option>
+            </select>
+            <div class="col-sm-12" [hidden]="_data.controls.materialId.valid">
+                <span class="help-block help-block-error">Material is required</span>
+            </div>
+        </div> -->
+        <div class="col-sm-12" [ngClass]="{'has-danger': _data.controls.young.invalid && _data.controls.young.dirty}">
+            <!--young-->
+            <label for="young" [innerHTML]="'Young Module ('+_units.pressure.symbol+')'"><span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="young" placeholder="Young Module (Pa)" formControlName="young">
+            <show-errors [control]="_data.controls.young"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': _data.controls.poisson.invalid && _data.controls.poisson.dirty}">
+            <!--poisson-->
+            <label for="poisson">Poisson Coeficient</label>
+            <input type="number" step="any" class="form-control" id="poisson" placeholder="Poisson Coeficient" formControlName="poisson">
+            <show-errors [control]="_data.controls.poisson"></show-errors>
+        </div>
+
+        <div class="col-sm-12" [ngClass]="{'has-danger': _data.controls.density.invalid && _data.controls.density.dirty}">
+            <!--density-->
+            <label for="density" [innerHTML]="'Density ('+_units.density.symbol+')'"><span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="density" placeholder="Density" formControlName="density">
+            <show-errors [control]="_data.controls.density"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': _data.controls.axialForce.invalid && _data.controls.axialForce.dirty}">
+            <!--axialForce-->
+            <label for="axialForce" [innerHTML]="'Axial Force ('+_units.force.symbol+')'"><span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="axialForce" placeholder="Axial Force (N)" formControlName="axialForce">
+            <show-errors [control]="_data.controls.axialForce"></show-errors>
+        </div>
+
+        <div class="col-sm-12" [ngClass]="{'has-danger': _data.controls.magneticForce.invalid && _data.controls.magneticForce.dirty}">
+            <!--magneticForce-->
+            <label for="magneticForce" [innerHTML]="'Magnetic Force ('+_units.force.symbol+')'"><span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="magneticForce" placeholder="Magnetic Force" formControlName="magneticForce">
+            <show-errors [control]="_data.controls.magneticForce"></show-errors>
+        </div>
+
+        <div class="col-sm-12" *ngIf="!isEditing">
+            <!-- insert at -->
+            <label for="insertAt">Insert at</label>
+            <select class="form-control" id="insertAt" (change)="testSelect($event.target.value)" formControlName="insertAt">
+                <option *ngFor="let pos of _insertPos" [value]="pos.value" [selected]="pos.selected">{{pos.label}}</option>
+            </select>
+        </div>
+    </div>
+    <!-- ribs -->
+    <div *ngIf="!_hasRibs">
+        <div class="col-sm-12">
+            <a class="btn sub-form" (click)="addRibs(); _data.controls['ribs'].markAsTouched()">
+                Add Ribs <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </div>
+    <div *ngIf="_hasRibs">
+        <div class="card-block">
+            <!-- list of ribs -->
+            <div class="form-group-wrapper" formArrayName="ribs">
+                <div class="new-item" *ngFor="let ribs of _data.controls['ribs'].controls; let i=index">
+                    <div class="panel-heading">
+                      <span>Ribs</span>
+                      <span (click)="removeRibs(i)"> <i class="fa fa-times"></i></span>
+                    </div>
+                    <div class="panel-body" [formGroupName]="i">
+                        <shaft-rib [data]="_data.controls['ribs'].controls[i]"></shaft-rib>
+                        <show-errors [control]="ribs"></show-errors>
+                    </div>
+                </div>
+                
+            </div>
+        </div> <!-- card-block -->
+    </div>
+
+    <div class="col-sm-12">
+        <button type="submit" class="btn" [disabled]="!_data.valid" (click)="close()">Save</button>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<form [formGroup]="_form">
+  <nb-card size="large">
+    <div class="header">System Options</div>
+    <div class="body">
+      <div class="row">
+        <!-- <div class="col-xxxl-2 col-md-3" *ngFor="let statusCard of commonSystemCardsSet">
+          <ngx-status-card [card]="statusCard"
+                           [value]="statusCard.selected"
+                           [formControl]="_form.controls['settings'].controls[statusCard.value]">
+            <i [ngClass]="statusCard.iconClass"></i>
+          </ngx-status-card>
+        </div> -->
+      </div>
+    </div>
+  </nb-card>
+  <nb-card size="large">
+    <div class="header">Result Options</div>
+    <div class="body">
+      <div class="row">
+        <!-- <div class="col-xxxl-2 col-md-3" *ngFor="let statusCard of commonResultCardsSet">
+          <ngx-status-card [card]="statusCard"
+                           [value]="statusCard.selected"
+                           [formControl]="_form.controls['results'].controls[statusCard.value]">
+            <i [ngClass]="statusCard.iconClass"></i>
+          </ngx-status-card>
+        </div> -->
+      </div>
+    </div>
+  </nb-card>
+</form>
+

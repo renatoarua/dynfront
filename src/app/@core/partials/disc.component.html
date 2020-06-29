@@ -1,0 +1,49 @@
+<h2 class="title">Disc</h2>
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.position.invalid && data.controls.position.dirty}">
+            <!--position-->
+            <label for="position" [innerHTML]="'Position ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="position" placeholder="Position" formControlName="position" autofocus>
+            <show-errors [control]="data.controls.position"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.externalDiameter.invalid && data.controls.externalDiameter.dirty}">
+            <!--externalDiameter-->
+            <label for="externalDiameter" [innerHTML]="'External Diameter ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="externalDiameter" placeholder="Session external diameter" formControlName="externalDiameter">
+            <show-errors [control]="data.controls.externalDiameter"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.internalDiameter.invalid && data.controls.internalDiameter.dirty}">
+            <!--internalDiameter-->
+            <label for="internalDiameter" [innerHTML]="'Internal Diameter ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="internalDiameter" placeholder="Session internal diameter" formControlName="internalDiameter">
+            <show-errors [control]="data.controls.internalDiameter"></show-errors>
+        </div>
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.thickness.invalid && data.controls.thickness.dirty}">
+            <!--thickness-->
+            <label for="thickness" [innerHTML]="'Thickness ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="thickness" placeholder="Disc Thickness" formControlName="thickness">  <!-- [(ngModel)]="_shaft.shaftSession.thickness" -->
+            <show-errors [control]="data.controls.thickness"></show-errors>
+        </div>
+        <!-- <div class="col-sm-12"> -->
+            <!--material-->
+        <!--     <label for="material">Material <span class="required">*</span></label>
+            <select class="form-control" id="material" formControlName="materialId">
+                <option *ngFor="let mat of _materials" [value]="mat.value" [selected]="">{{mat.label}}</option>
+            </select>
+            <div class="col-sm-12" [hidden]="data.controls.materialId.valid">
+                <span class="help-block help-block-error">Material is required</span>
+            </div>
+        </div> -->
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.density.invalid && data.controls.density.dirty}">
+            <!--density-->
+            <label for="density" [innerHTML]="'Density ('+_units.density.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="density" placeholder="Density" formControlName="density">
+            <show-errors [control]="data.controls.density"></show-errors>
+        </div>
+
+        <div class="col-sm-12">
+            <button type="submit" class="btn" [disabled]="!data.valid" (click)="close()">Save</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+@import '../@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-card-header {
+    span {
+      display: block;
+      text-align: center;
+    }
+    span:first-of-type {
+      font-size: 23px;  
+    }
+  }
+
+  nb-card-body {
+    .price {
+      display: block;
+      width: 8rem;
+      height: 8rem;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 2rem;
+      line-height: 8rem;
+      border: 2px solid;
+      border-radius: 50%;
+
+      &:before {
+        content: 'usd';
+        font-size: 1rem;
+        position: absolute;
+        top: 0;
+        left: 30%;
+      }
+
+      &:after {
+        content: '/mo';
+        font-size: 1rem;
+        position: absolute;
+        top: 3rem;
+        left: 63%;
+      }
+
+      &.yearly {
+        &:after {
+          content: '/yr';
+        }
+      }
+
+      &.percent {
+        &:after {
+          content: ' off';
+        }
+         &:before {
+          content: '';
+        }
+      }
+    }
+
+    ul {      
+      padding: 0;
+      list-style-type: none;
+      text-align: center;
+    }
+    li {
+      padding: 10px 0 0 0;
+    }
+  }
+
+  nb-card-footer {
+    text-align: center;
+    
+  }
+}

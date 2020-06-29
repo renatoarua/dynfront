@@ -1,0 +1,100 @@
+// @nebular theming framework
+@import '~@nebular/theme/styles/theming';
+// @nebular out of the box themes
+@import '~@nebular/theme/styles/themes';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+// which themes you what to enable (empty to enable all)
+$nb-enabled-themes: (default, cosmic, corporate, blur);
+
+$nb-themes: nb-register-theme((
+ // app wise variables for each theme
+  sidebar-header-gap: 2rem,
+  sidebar-header-height: initial,
+  layout-content-width: 1400px,
+  font-main: Roboto,
+  font-secondary: Exo,
+  switcher-background: #ebeff5,
+  switcher-background-percentage: 50%,
+  drops-icon-line-gadient: -webkit-linear-gradient(#01dbb5, #0bbb79),
+), default, default);
+
+$nb-themes: nb-register-theme((
+  // app wise variables for each theme
+  sidebar-header-gap: 2rem,
+  sidebar-header-height: initial,
+  layout-content-width: 1400px,
+  font-main: Roboto,
+  font-secondary: Exo,
+  switcher-background: #4e41a5,
+  switcher-background-percentage: 14%,
+  drops-icon-line-gadient: -webkit-linear-gradient(#a258fe, #7958fa),
+), cosmic, cosmic);
+
+$nb-themes: nb-register-theme((
+  // app wise variables for each theme
+  font-main: 'Roboto Mono',
+  font-secondary: monospace,
+  url-bg: url('/assets/img/background-large.jpg'),
+  url-bg-glow: url('/assets/img/glow.png'),
+  /*
+  url-card-bg: url('/assets/img/blur-bg-blurred.jpg'),
+  */
+
+  color-bg:            #106466,
+  color-fg:            #3fbbb0,
+
+  color-fg-highlight:  #18b797,
+
+  separator:           #1d435a,
+  color-gray:          #5c696f,
+  color-white:         #e3f7d2,
+
+  shadow: 0,
+  radius: 0,
+  layout-bg:           #2c3532,
+
+  tooltip-fg:          #e3f7d2,
+
+  color-primary:       #3fbbb0,
+  color-success:       #18b797,
+  color-info:          #4de2ff,
+  color-warning:       #ee9a37,
+  color-danger:        #ee5b37,
+
+  link-color:          #00f9a6,
+  link-color-hover:    #14ffbe,
+
+  scrollbar-fg:        #c8f6d2,
+  scrollbar-bg:        #106466,
+
+  layout-gradient: radial-gradient(circle at 50% 50%, #106466, #2c3532),
+  /*card-bg-gradient: linear-gradient(to bottom, rgba(22,50,61,0.9) 0%,rgba(1,1,1,0.85) 30%,rgba(1,1,1,0.75) 50%,rgba(1,1,1,0.85) 70%,rgba(22,50,61,0.9) 100%),*/
+  card-bg-gradient: linear-gradient(to bottom, rgba(16, 100, 102, 0.7) 0%, rgba(44,53,50,0.8) 30%, rgba(44,53,50,0.6) 50%, rgba(44,53,50,0.7) 70%, rgba(16, 100, 102, 0.7) 100%),
+  card-bg-gradient-reverse: linear-gradient(to bottom, rgba(227, 247, 210, 0.7) 0%, rgba(227, 247, 210,0.5) 30%, rgba(227, 247, 210,0.3) 50%, rgba(227, 247, 210,0.5) 70%, rgba(227, 247, 210, 0.7) 100%),
+
+  success-linear: linear-gradient(to bottom, rgba(#e3f7d2, 0.7) 0%, rgba(#3eceb2, 0.7) 100%),
+  success-linear-reverse: linear-gradient(to bottom, rgba(#3eceb2, 0.7) 0%, rgba(#e3f7d2, 0.7) 100%),
+
+  form-control-bg: #106466,
+  form-control-focus-bg: #106466,
+
+  card-fg: #3fbbb0,
+  color-fg-text: #3fbbb0,
+  color-fg-heading: #3fbbb0,
+  sidebar-header-gap: 2rem,
+
+), blur, cosmic);
+
+$nb-themes: nb-register-theme((
+  // app wise variables for each theme
+  sidebar-header-gap: 2rem,
+  sidebar-header-height: initial,
+  layout-content-width: 1400px,
+  font-main: Roboto,
+  font-secondary: Exo,
+  switcher-background: #2b2d34,
+  switcher-background-percentage: 14%,
+  drops-icon-line-gadient: -webkit-linear-gradient(#e9e8eb, #a7a2be),
+), corporate, corporate);

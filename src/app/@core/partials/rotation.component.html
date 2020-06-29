@@ -1,0 +1,66 @@
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-12" [ngClass]="{'has-danger': data.controls.speed.invalid && data.controls.speed.dirty}">
+        	<!--speed-->
+            <label for="speed">Spin Speed (rpm) <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="speed" placeholder="Speed" formControlName="speed" autofocus>
+            <show-errors [control]="data.controls.speed"></show-errors>
+        </div>
+    </div>
+	<div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kxx.invalid && data.controls.kxx.dirty}">
+            <!--kxx-->
+            <label for="kxx" [innerHTML]="'Kxx ('+_units.stiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kxx" placeholder="Kxx" formControlName="kxx">
+            <show-errors [control]="data.controls.kxx"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kxz.invalid && data.controls.kxz.dirty}">
+            <!--kxz-->
+            <label for="kxz" [innerHTML]="'Kxz ('+_units.stiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kxz" placeholder="Kxz" formControlName="kxz">
+            <show-errors [control]="data.controls.kxz"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kzx.invalid && data.controls.kzx.dirty}">
+            <!--kzx-->
+            <label for="kzx" [innerHTML]="'Kzx ('+_units.stiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kzx" placeholder="Kzx" formControlName="kzx">
+            <show-errors [control]="data.controls.kzx"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.kzz.invalid && data.controls.kzz.dirty}">
+            <!--kzz-->
+            <label for="kzz" [innerHTML]="'Kzz ('+_units.stiffness.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="kzz" placeholder="kzz" formControlName="kzz">
+            <show-errors [control]="data.controls.kzz"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.cxx.invalid && data.controls.cxx.dirty}">
+            <!--cxx-->
+            <label for="cxx" [innerHTML]="'Cxx ('+_units.damping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="cxx" placeholder="Cxx" formControlName="cxx">
+            <show-errors [control]="data.controls.cxx"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.cxz.invalid && data.controls.cxz.dirty}">
+            <!--cxz-->
+            <label for="cxz" [innerHTML]="'Cxz ('+_units.damping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="cxz" placeholder="Cxz" formControlName="cxz">
+            <show-errors [control]="data.controls.cxz"></show-errors>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.czx.invalid && data.controls.czx.dirty}">
+            <!--czx-->
+            <label for="czx" [innerHTML]="'Czx ('+_units.damping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="czx" placeholder="Czx" formControlName="czx">
+            <show-errors [control]="data.controls.czx"></show-errors>
+        </div>
+        <div class="col-sm-6" [ngClass]="{'has-danger': data.controls.czz.invalid && data.controls.czz.dirty}">
+            <!--czz-->
+            <label for="czz" [innerHTML]="'Czz ('+_units.damping.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="czz" placeholder="Czz" formControlName="czz">
+            <show-errors [control]="data.controls.czz"></show-errors>
+        </div>
+    </div>
+</div>

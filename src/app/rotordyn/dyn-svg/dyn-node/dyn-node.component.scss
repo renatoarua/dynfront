@@ -1,0 +1,150 @@
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/components/card/card.component.theme';
+@import '~@nebular/theme/styles/global/breakpoints';
+@import '~@nebular/theme/styles/core/mixins';
+
+@include nb-install-component() {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /*background: nb-theme(color-bg);
+  border-left: 1px solid nb-theme(separator);*/
+
+  .header {
+    padding: 1.25rem 0 0.85rem 1.25rem;
+    font-family: Exo;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    padding: 0.5rem;
+    color: nb-theme(color-white);
+    border: 1px solid nb-theme(color-primary);
+  }
+
+  .name {
+    font-family: nb-theme(font-secondary);
+    font-size: 1.5rem;
+    font-weight: nb-theme(font-weight-normal);
+    /*color: nb-theme(color-fg-heading);*/
+    text-shadow:
+      2px 2px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }
+
+  .number {
+    font-family: nb-theme(font-main);
+    font-size: 1.0rem;
+    line-height: 1.25rem;
+    font-weight: nb-theme(font-weight-light);
+  }
+
+  .node-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: -1.5rem;
+
+    .info {
+      display: flex;
+      justify-content: space-around;
+
+      .big {
+        font-size: 5rem;
+        font-weight: nb-theme(font-weight-bolder);
+        font-family: nb-theme(font-secondary);
+        color: nb-theme(color-fg-heading);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .group {
+        font-size: 2rem;
+        line-height: 10rem;
+        color: nb-theme(color-success);
+
+        @include nb-for-theme(cosmic) {
+          color: nb-theme(color-fg);
+          text-shadow: 0 3px 0 #665ebd,
+          0 4px 10px rgba(33, 7, 77, 0.5),
+          0 2px 10px #928dff;
+        }
+
+        @include nb-for-theme(corporate) {
+          color: nb-theme(color-warning);
+        }
+      }
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 3rem;
+
+      .parameter {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        .parameter-name {
+          font-family: nb-theme(font-main);
+          font-size: 1.25rem;
+          font-weight: nb-theme(font-weight-light);
+          line-height: 2rem;
+        }
+
+        .parameter-value {
+          font-family: nb-theme(font-secondary);
+          color: nb-theme(color-white);
+          font-weight: bolder;
+          text-shadow:
+            2px 2px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+        }
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 20px;
+
+    button {
+      width: 4rem;
+      margin-bottom: 1rem;
+      flex-direction: column;
+      transition: color 0.5s;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      padding: 0.5rem 1rem;
+    }
+
+    input.split {
+      height: 3.7rem;
+      width: 4rem;
+      padding: 0px 15px 0px 15px;
+      
+      background: transparent;
+      outline: none;
+      color: #0B293A;
+      border: solid 1px nb-theme(color-primary);
+    }
+  }
+}

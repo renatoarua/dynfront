@@ -1,0 +1,360 @@
+<div class="row" *ngIf="_errorMessage">
+    <div class="col-sm-12">
+        <p class="alert alert-danger">{{_errorMessage}}</p>
+    </div>
+</div>
+<div class="animated fadeIn" *ngIf="!_mode && !_errorMessage">
+    <span class="spinner"></span>
+
+</div>
+<div class="animated fadeIn" *ngIf="_mode">
+    <div class="row">
+        <div class="col-sm-12">
+            <form [formGroup]="_form" (ngSubmit)="onSubmit()">
+            	<div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Machine</strong><br />
+                            <small></small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                    	<input type="hidden" name="machineId" id="machineId" formControlName="machineId" [(ngModel)]="_project.machine.machineId">
+        				<!-- length -->
+                        <div class="form-group-wrapper">
+                            <div class="form-group row">
+                                <label class="col-sm-12" for="length">Length <span class="required">*</span></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="length" id="length" placeholder="Total Length" formControlName="length">
+                                </div><div class="clearfix"></div>
+                                <div class="col-sm-12" [hidden]="_form.controls.length.valid">
+                                    <!-- <span class="help-block help-block-error">{{_formErrors.name.message}}</span> -->
+                                    <span class="help-block help-block-error">Length is required</span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="help-text">* Length of the project.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- length -->
+                        <div class="form-group-wrapper">
+                            <div class="form-group row">
+                                <label class="col-sm-12" for="ldRatio">Ratio (length/diameter) <span class="required">*</span></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="ldRatio" id="ldRatio" placeholder="Ratio" formControlName="ldRatio">
+                                </div><div class="clearfix"></div>
+                                <div class="col-sm-12" [hidden]="_form.controls.ldRatio.valid">
+                                    <!-- <span class="help-block help-block-error">{{_formErrors.ldRatio.message}}</span> -->
+                                    <span class="help-block help-block-error">Ratio is required</span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="help-text">* Ratio of the project.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- card-block -->
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Sections</strong><br />
+                            <small>Add Section</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+        				<!-- list of sections -->
+                        <div class="form-group-wrapper" formArrayName="sections">
+                            <div *ngFor="let section of _form.controls['sections'].controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Section {{i + 1}}</span>
+                                  <span *ngIf="_form.controls['sections'].controls.length > 1" (click)="removeSection(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-section [data]="_form.controls['sections'].controls[i]"></shaft-section>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- card-block -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a class="btn btn-sm btn-warning" (click)="addSection()">
+                                    Add another section <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Ribs</strong><br />
+                            <small>Add Ribs</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+        				<!-- list of ribs -->
+                        <div class="form-group-wrapper" formArrayName="ribs">
+                            <div *ngFor="let rib of _form.controls['ribs'].controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Rib {{i + 1}}</span>
+                                  <span *ngIf="_form.controls['ribs'].controls.length > 1" (click)="removeRib(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-rib [data]="_form.controls['ribs'].controls[i]"></shaft-rib>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- card-block -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a class="btn btn-sm btn-warning" (click)="addRib()">
+                                    Add another rib <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Discs</strong><br />
+                            <small>Add Discs</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+        				<!-- list of discs -->
+                        <div class="form-group-wrapper" formArrayName="discs">
+                            <div *ngFor="let disc of _form.controls['discs'].controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Disc {{i + 1}}</span>
+                                  <span *ngIf="_form.controls['discs'].controls.length > 1" (click)="removeDisc(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-disc [data]="_form.controls['discs'].controls[i]"></shaft-disc>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- card-block -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a class="btn btn-sm btn-warning" (click)="addDisc()">
+                                    Add another disc <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Inertias</strong><br />
+                            <small>Add Inertia</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+        				<!-- list of inertias -->
+                        <div class="form-group-wrapper" formArrayName="inertias">
+                            <div *ngFor="let inertia of _form.controls['inertias'].controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Inertia {{i + 1}}</span>
+                                  <span *ngIf="_form.controls['inertias'].controls.length > 1" (click)="removeInertia(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-inertia [data]="_form.controls['inertias'].controls[i]"></shaft-inertia>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- card-block -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a class="btn btn-sm btn-warning" (click)="addInertia()">
+                                    Add another inertia <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Roller Bearings</strong><br />
+                            <small>Add Bearings</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+        				<!-- list of rollerbearings -->
+                        <div class="form-group-wrapper" formArrayName="rollerbearings">
+                            <div *ngFor="let bearing of _form.controls['rollerbearings'].controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Roller Bearing {{i + 1}}</span>
+                                  <span *ngIf="_form.controls['rollerbearings'].controls.length > 1" (click)="removeRollerBearing(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-roller [data]="_form.controls['rollerbearings'].controls[i]"></shaft-roller>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- card-block -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a class="btn btn-sm btn-warning" (click)="addRollerBearing()">
+                                    Add another roller bearing <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Journal Bearings</strong><br />
+                            <small>Add Bearings</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <!-- list of journalbearings -->
+                        <div class="form-group-wrapper" formArrayName="journalbearings">
+                            <div *ngFor="let bearing of _form.controls['journalbearings'].controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Journal Bearing {{i + 1}}</span>
+                                  <span *ngIf="_form.controls['journalbearings'].controls.length > 1" (click)="removeJournalBearing(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-journal [data]="_form.controls['journalbearings'].controls[i]"></shaft-journal>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- card-block -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a class="btn btn-sm btn-warning" (click)="addJournalBearing()">
+                                    Add another journal bearing <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Visco Elastic Support</strong><br />
+                            <small>Add VES</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <!-- list of ves -->
+                        <div class="form-group-wrapper" formArrayName="ves">
+                            <div *ngFor="let support of _form.controls['ves'].controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>VES {{i + 1}}</span>
+                                  <span *ngIf="_form.controls['ves'].controls.length > 1" (click)="removeVes(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-ves [data]="_form.controls['ves'].controls[i]"></shaft-ves>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- card-block -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a class="btn btn-sm btn-warning" (click)="addVes()">
+                                    Add another VES <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="update">
+                            <strong>Foundation</strong><br />
+                            <small>Add Foundation</small>
+                        </div>
+                    </div>
+                    <div class="card-block">
+        				<!-- list of foundations -->
+                        <div class="form-group-wrapper" formArrayName="foundations">
+                            <div *ngFor="let found of _form.controls['foundations'].controls; let i=index">
+                                <div class="panel-heading">
+                                  <span>Foundation {{i + 1}}</span>
+                                  <span *ngIf="_form.controls['foundations'].controls.length > 1" (click)="removeFoundation(i)"> <i class="fa fa-times"></i></span>
+                                </div>
+
+                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                <div class="panel-body" [formGroupName]="i">
+                                    <shaft-foundation [data]="_form.controls['foundations'].controls[i]"></shaft-foundation>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- card-block -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a class="btn btn-sm btn-warning" (click)="addFoundation()">
+                                    Add another foundation <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- card -->
+
+                <button type="submit">Submit</button>
+            </form> <!-- card-block -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,528 @@
+<div class="animated fadeIn" *ngIf="(_project) as project; else loading">
+  <form (ngSubmit)="form.valid && onSubmit(form)" #form>
+
+    <div class="row"> <!-- row container -->
+      <div class="col-sm-12">
+        <nb-card size="large">
+          <nb-card-body style="overflow: hidden;">
+            <div class="row">
+            <div class="col-sm-4"> <!-- control panel -->
+              <div class="row control-panel" [ngClass]="{off: _errorCount > 0}">
+                <div class="col-sm-12" style="height: 29vh;">
+                  <h3 class="title"><span>Console</span></h3>
+                  <project-errors [errors]="_errors"></project-errors>
+                </div>
+                <div class="col-sm-12 status">
+                  <h3 class="title"><span>Calculate</span></h3>
+                  <!-- <i [className]="_errorCount > 0 ? 'fa fa-ban':'fa fa-play-circle'"></i> -->
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
+                    
+                    <defs>
+                      <filter id="glow">
+                        <feGaussianBlur class="blur" stdDeviation="10" result="coloredBlur"></feGaussianBlur>
+                        <feMerge>
+                          <feMergeNode in="coloredBlur"></feMergeNode>
+                          <feMergeNode in="SourceGraphic"></feMergeNode>
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    
+                    <!-- Stroke ring -->
+                    <circle class="ring st0" cx="500" cy="500" r="302.8">
+                      <!-- <animateTransform attributeType="xml"
+                                        attributeName="transform"
+                                        type="rotate"
+                                        from="0 500 500"
+                                        to="360 500 500"
+                                        dur="100s"
+                                        repeatCount="indefinite"></animateTransform> -->
+                    </circle>
+                    
+                    <!-- Inner ring -->
+                    <circle class="ring st1" cx="500" cy="500" r="237.7">
+                        <!-- <animateTransform attributeType="xml"
+                                          attributeName="transform"
+                                          type="rotate"
+                                          from="0 500 500"
+                                          to="360 500 500"
+                                          dur="40s"
+                                          repeatCount="indefinite"></animateTransform> -->
+                    </circle>
+                    
+                    <!-- Outer ring -->
+                    <circle class="ring st2" cx="500" cy="500" r="366.8" transform="rotate(0 500 500)">
+                      <!-- <animateTransform attributeType="xml"
+                                        attributeName="transform"
+                                        type="rotate"
+                                        from="0 500 500"
+                                        to="-360 500 500"
+                                        dur="50s"
+                                        repeatCount="indefinite"></animateTransform> -->
+                    </circle>
+                    <!-- Outer thin ring -->
+                    <circle class="ring st3" cx="500" cy="500" r="385.1"></circle>
+
+                    <g class="icon" transform="translate(500,500)" (click)="runProject()">
+                      <text x="-150" y="125" *ngIf="_errorCount > 0">&#xf05e;</text>
+                      <text x="-150" y="125" *ngIf="_errorCount <= 0">&#xf01d;</text>
+                    </g>
+                  </svg>
+                </div>
+                
+              </div>
+            </div> <!-- ./control panel -->
+
+            <div class="col-sm-8">
+              <div class="options-grid">
+                <div class="brick">
+                  <h3 class="title"><span>System</span></h3>
+                  <dyn-switcher *ngFor="let statusCard of commonSystemCardsSet"
+                    [label]="statusCard.label"
+                    [value]="statusCard.selected"
+                    [name]="statusCard.value"
+                    [(ngModel)]="project.projectsetting.systemoptions[statusCard.value]"
+                    (change)="optionChanged($event)">
+                    <!-- <i [ngClass]="statusCard.iconClass"></i> -->
+                  </dyn-switcher>
+                </div>
+                <div class="brick">
+                  <h3 class="title"><span>Static</span></h3>
+                  <dyn-switcher *ngFor="let statusCard of categories(commonResultCardsSet, 'static')"
+                    [label]="statusCard.label"
+                    [value]="statusCard.selected"
+                    [name]="statusCard.value"
+                    [(ngModel)]="project.projectsetting.resultoptions[statusCard.value]"
+                    (change)="optionChanged($event)">
+                    <!-- <i [ngClass]="statusCard.iconClass"></i> -->
+                  </dyn-switcher>
+                </div>
+                <div class="brick">
+                  <h3 class="title"><span>Dynamic</span></h3>
+                  <dyn-switcher *ngFor="let statusCard of categories(commonResultCardsSet, 'dynamic')"
+                    [label]="statusCard.label"
+                    [value]="statusCard.selected"
+                    [name]="statusCard.value"
+                    [(ngModel)]="project.projectsetting.resultoptions[statusCard.value]"
+                    (change)="optionChanged($event)">
+                    <!-- <i [ngClass]="statusCard.iconClass"></i> -->
+                  </dyn-switcher>
+                </div>
+                <div class="brick">
+                  <h3 class="title"><span>Modal</span></h3>
+                  <dyn-switcher *ngFor="let statusCard of categories(commonResultCardsSet, 'modal')"
+                    [label]="statusCard.label"
+                    [value]="statusCard.selected"
+                    [name]="statusCard.value"
+                    [(ngModel)]="project.projectsetting.resultoptions[statusCard.value]"
+                    (change)="optionChanged($event)">
+                    <!-- <i [ngClass]="statusCard.iconClass"></i> -->
+                  </dyn-switcher>
+                </div>
+                <div class="brick">
+                  <h3 class="title"><span>Responses</span></h3>
+                  <dyn-switcher *ngFor="let statusCard of categories(commonResultCardsSet, 'response')"
+                    [label]="statusCard.label"
+                    [value]="statusCard.selected"
+                    [name]="statusCard.value"
+                    [(ngModel)]="project.projectsetting.resultoptions[statusCard.value]"
+                    (change)="optionChanged($event)">
+                    <!-- <i [ngClass]="statusCard.iconClass"></i> -->
+                  </dyn-switcher>
+                </div>
+                <div class="brick">
+                  <!-- <h3 class="title"><span>Optimization</span></h3>
+                  <dyn-switcher *ngFor="let statusCard of categories(commonResultCardsSet, 'optimization')"
+                    [label]="statusCard.label"
+                    [value]="statusCard.selected"
+                    [name]="statusCard.value"
+                    [(ngModel)]="project.projectsetting.resultoptions[statusCard.value]"
+                    (change)="optionChanged($event)">
+                  </dyn-switcher> -->
+                </div>
+              </div>
+              <h3 class="title"><span>Actions</span></h3>
+              <div class="actions-grid">
+                <dyn-button [status]="_dirty ? 'warning' : ''" (onclick)="save()">
+                  <span class="name">Save</span>
+                </dyn-button>
+                <dyn-button (onclick)="resetForm()">
+                  <span class="name">Reset</span>
+                </dyn-button>
+                <dyn-button [status]="_errorMsgs.resultcampbell ? 'danger' : ''" (onclick)="openModal('resultcampbell')">
+                  <span class="name">Campbell</span>
+                  <i class="icon fa fa-plus"></i>
+                </dyn-button>
+                <dyn-button [status]="_errorMsgs.resultstiffness ? 'danger' : ''" (onclick)="openModal('resultstiffness')">
+                  <span class="name">Stiffness Map</span>
+                  <i class="icon fa fa-plus"></i>
+                </dyn-button>
+                <dyn-button [status]="_errorMsgs.resultmodes ? 'danger' : ''" (onclick)="openModal('resultmodes')">
+                  <span class="name">Modes</span>
+                  <i class="icon fa fa-plus"></i>
+                </dyn-button>
+                <dyn-button [status]="_errorMsgs.resulttorsional ? 'danger' : ''" (onclick)="openModal('resulttorsional')">
+                  <span class="name">Torsional</span>
+                  <i class="icon fa fa-plus"></i>
+                </dyn-button>
+                <dyn-button [status]="_errorMsgs.resultconstant ? 'danger' : ''" (onclick)="openModal('resultconstant')">
+                  <span class="name">Constant</span>
+                  <i class="icon fa fa-plus"></i>
+                </dyn-button>
+                <dyn-button [status]="_errorMsgs.resultunbalance ? 'danger' : ''" (onclick)="openModal('resultunbalance')">
+                  <span class="name">Unbalance</span>
+                  <i class="icon fa fa-plus"></i>
+                </dyn-button>
+                <dyn-button [status]="_errorMsgs.resulttime ? 'danger' : ''" (onclick)="openModal('resulttime')">
+                  <span class="name">Time</span>
+                  <i class="icon fa fa-plus"></i>
+                </dyn-button>
+              </div>
+            </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div> <!-- ./row container -->
+
+    <div class="row card-deck">
+      <div class="col-sm-3" *ngFor="let result of _project.projectsetting.resultcampbell; let i=index">
+        <nb-card class="small campbell">
+          <nb-card-header>
+            <span>Campbell #{{i+1}} </span>
+            <span class="close" (click)="removeCampbell(i)"> <i class="fa fa-times"></i></span>
+            <span class="edit" (click)="editCampbell(i)"> <i class="fa fa-pencil"></i></span>
+          </nb-card-header>
+          <nb-card-body>
+            <div class="result-card">
+              <div class="value">
+                <p>Initial Spin</p>
+                <p>{{+result.initialSpin}}</p><p>rpm</p>
+              </div>
+              <div class="value">
+                <p>Final Spin</p>
+                <p>{{+result.finalSpin}}</p><p>rpm</p>
+              </div>
+              <div class="value">
+                <p>num. Steps</p>
+                <p>{{+result.steps}}</p><p>u.</p>
+              </div>
+              <div class="value">
+                <p>num. Frequencies</p>
+                <p>{{+result.frequencies}}</p><p>u.</p>
+              </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    
+      <div class="col-sm-3" *ngFor="let result of _project.projectsetting.resultstiffness; let i=index">
+        <nb-card class="small stiffness">
+          <nb-card-header>
+            <span>Stiffness Map #{{i+1}} </span>
+            <span class="close" (click)="removeStiff(i)"> <i class="fa fa-times"></i></span>
+            <span class="edit" (click)="editStiff(i)"> <i class="fa fa-pencil"></i></span>
+          </nb-card-header>
+          <nb-card-body>
+            <div class="result-card">
+              <div class="value">
+                <p>Initial Stiffness</p>
+                <p>{{+result.initialStiffness}}</p><p>{{_units.stiffness.symbol}}</p>
+              </div>
+              <div class="value">
+                <p>Initial Spin</p>
+                <p>{{+result.initialSpin}}</p><p>rpm</p>
+              </div>
+              <div class="value">
+                <p>Final Spin</p>
+                <p>{{+result.finalSpin}}</p><p>rpm</p>
+              </div>
+              <div class="value">
+                <p>num. Decades</p>
+                <p>{{+result.decades}}</p><p>u.</p>
+              </div>
+              <div class="value">
+                <p>num. Frequencies</p>
+                <p>{{+result.frequencies}}</p><p>u.</p>
+              </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+
+      <div class="col-sm-3" *ngFor="let result of _project.projectsetting.resultmodes; let i=index">
+        <nb-card class="small modes">
+          <nb-card-header>
+            <span>Modes #{{i+1}} </span>
+            <span class="close" (click)="removeModes(i)"> <i class="fa fa-times"></i></span>
+            <span class="edit" (click)="editModes(i)"> <i class="fa fa-pencil"></i></span>
+          </nb-card-header>
+          <nb-card-body>
+            <div class="result-card">
+              <div class="value">
+                <p>Spin Speed</p>
+                <p>{{+result.maxFrequency}}</p><p>rpm</p>
+              </div>
+              <div class="value">
+                <p>num. Modes</p>
+                <p>{{+result.modes}}</p><p>u.</p>
+              </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+
+      <div class="col-sm-6" *ngFor="let result of _project.projectsetting.resultconstant; let i=index">
+        <nb-card class="medium constant">
+          <nb-card-header>
+            <span>Constant Response #{{i+1}} </span>
+            <span class="close" (click)="removeConstant(i)"> <i class="fa fa-times"></i></span>
+            <span class="edit" (click)="editConstant(i)"> <i class="fa fa-pencil"></i></span>
+          </nb-card-header>
+          <nb-card-body>
+            <div class="result-card">
+              <div class="value">
+                <p>Initial Frequency</p>
+                <p>{{+result.initialFrequency}}</p><p>Hz</p>
+              </div>
+              <div class="value">
+                <p>Final Frequency</p>
+                <p>{{+result.finalFrequency}}</p><p>Hz</p>
+              </div>
+              <div class="value">
+                <p>num. Steps</p>
+                <p>{{+result.steps}}</p><p>u.</p>
+              </div>
+              <div class="value">
+                <p>num. Modes</p>
+                <p>{{+result.modes}}</p><p>u.</p>
+              </div>
+              <div class="value">
+                <p>Spin Speed</p>
+                <p>{{+result.speed}}</p><p>rpm</p>
+              </div>
+            </div>
+            <div class="result-appendix">
+              <table>
+                <tr class="group">
+                  <td colspan="4">Responses</td>
+                </tr>
+                <tr class="title">
+                  <td>#</td>
+                  <td>Pos.</td>
+                  <td>Dir.</td>
+                  <td> - </td>
+                </tr>
+                <tr *ngFor="let response of result.responses; let j=index" class="data">
+                  <td>{{j+1}}</td>
+                  <td>{{+response.position}} {{_units.length.symbol}}</td>
+                  <td>{{coords(+response.coord)}}</td>
+                  <td> - </td>
+                </tr>
+                <tr class="group">
+                  <td colspan="4">External Forces</td>
+                </tr>
+                <tr class="title">
+                  <td>#</td>
+                  <td>Pos.</td>
+                  <td>Force</td>
+                  <td>Dir.</td>
+                </tr>
+                <tr *ngFor="let force of result.forces; let k=index" class="data">
+                  <td>{{k+1}}</td>
+                  <td>{{+force.position}} {{_units.length.symbol}}</td>
+                  <td>{{+force.force}} {{_units.force.symbol}}</td>
+                  <td>{{coords(+force.coord)}}</td>
+                </tr>
+              </table>
+              
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+
+      <div class="col-sm-6" *ngFor="let result of _project.projectsetting.resultunbalance; let i=index">
+        <nb-card class="medium unbalance">
+          <nb-card-header>
+            <span>Unbalance Response #{{i+1}} </span>
+            <span class="close" (click)="removeUnbalance(i)"> <i class="fa fa-times"></i></span>
+            <span class="edit" (click)="editUnbalance(i)"> <i class="fa fa-pencil"></i></span>
+          </nb-card-header>
+          <nb-card-body>
+            <div class="result-card">
+              <div class="value">
+                <p>Initial Spin</p>
+                <p>{{+result.initialSpin}}</p><p>rpm</p>
+              </div>
+              <div class="value">
+                <p>Final Spin</p>
+                <p>{{+result.finalSpin}}</p><p>rpm</p>
+              </div>
+              <div class="value">
+                <p>num. Steps</p>
+                <p>{{+result.steps}}</p><p>u.</p>
+              </div>
+              <div class="value">
+                <p>num. Modes</p>
+                <p>{{+result.modes}}</p><p>u.</p>
+              </div>
+            </div>
+            <div class="result-appendix">
+              <table>
+                <tr class="group">
+                  <td colspan="4">Responses</td>
+                </tr>
+                <tr class="title">
+                  <td>#</td>
+                  <td>Pos.</td>
+                  <td>Dir.</td>
+                  <td> - </td>
+                </tr>
+                <tr *ngFor="let response of result.responses; let j=index" class="data">
+                  <td>{{j+1}}</td>
+                  <td>{{+response.position}} {{_units.length.symbol}}</td>
+                  <td>{{coords(+response.coord)}}</td>
+                  <td> - </td>
+                </tr>
+                <tr class="group">
+                  <td colspan="4">Unbalances</td>
+                </tr>
+                <tr class="title">
+                  <td>#</td>
+                  <td>Pos.</td>
+                  <td>Unb.</td>
+                  <td>Phase</td>
+                </tr>
+                <tr *ngFor="let phase of result.phases; let k=index" class="data">
+                  <td>{{k+1}}</td>
+                  <td>{{+phase.position}} {{_units.length.symbol}}</td>
+                  <td>{{+phase.unbalance}} {{_units.unbalance.symbol}}</td>
+                  <td>{{+phase.phase}} {{_units.degrees.symbol}}</td>
+                </tr>
+              </table>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+
+      <div class="col-sm-6" *ngFor="let result of _project.projectsetting.resulttorsional; let i=index">
+        <nb-card class="medium torsional">
+          <nb-card-header>
+            <span>Torsional Analysis #{{i+1}} </span>
+            <span class="close" (click)="removeTorsional(i)"> <i class="fa fa-times"></i></span>
+            <span class="edit" (click)="editTorsional(i)"> <i class="fa fa-pencil"></i></span>
+          </nb-card-header>
+          <nb-card-body>
+            <div class="result-card">
+              <div class="value">
+                <p>Initial Frequency</p>
+                <p>{{+result.initialFrequency}}</p><p>Hz</p>
+              </div>
+              <div class="value">
+                <p>Final Frequency</p>
+                <p>{{+result.finalFrequency}}</p><p>Hz</p>
+              </div>
+              <div class="value">
+                <p>num. Steps</p>
+                <p>{{+result.steps}}</p><p>u.</p>
+              </div>
+              <div class="value">
+                <p>num. Modes</p>
+                <p>{{+result.modes}}</p><p>u.</p>
+              </div>
+            </div>
+            <div class="result-appendix">
+              <table>
+                <tr class="group">
+                  <td colspan="4">Responses</td>
+                </tr>
+                <tr class="title">
+                  <td>#</td>
+                  <td>Pos.</td>
+                  <td> - </td>
+                  <td> - </td>
+                </tr>
+                <tr *ngFor="let response of result.responses; let j=index" class="data">
+                  <td>{{j+1}}</td>
+                  <td>{{+response.position}} {{_units.length.symbol}}</td>
+                  <td> - </td>
+                  <td> - </td>
+                </tr>
+                <tr class="group">
+                  <td colspan="4">External Forces</td>
+                </tr>
+                <tr class="title">
+                  <td>#</td>
+                  <td>Pos.</td>
+                  <td>Tork</td>
+                  <td>Phase</td>
+                </tr>
+                <tr *ngFor="let tork of result.phases; let k=index" class="data">
+                  <td>{{k+1}}</td>
+                  <td>{{+tork.position}} {{_units.length.symbol}}</td>
+                  <td>{{+tork.tork}} {{_units.tork.symbol}}</td>
+                  <td>{{+tork.phase}} {{_units.degrees.symbol}}</td>
+                </tr>
+              </table>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+
+      <div class="col-sm-6" *ngFor="let result of _project.projectsetting.resulttime; let i=index">
+        <nb-card class="medium time">
+          <nb-card-header>
+            <span>Time Response #{{i+1}} </span>
+            <span class="close" (click)="removeTime(i)"> <i class="fa fa-times"></i></span>
+            <span class="edit" (click)="editTime(i)"> <i class="fa fa-pencil"></i></span>
+          </nb-card-header>
+          <nb-card-body>
+            <div class="result-card">
+              <div class="value">
+                <p>Initial Spin</p>
+                <p>{{+result.initialSpin}}</p><p>rpm</p>
+              </div>
+              <div class="value">
+                <p>Final Spin</p>
+                <p>{{+result.finalSpin}}</p><p>rpm</p>
+              </div>
+              <div class="value">
+                <p>num. Steps</p>
+                <p>{{+result.steps}}</p><p>u.</p>
+              </div>
+              <div class="value">
+                <p>num. Modes</p>
+                <p>{{+result.modes}}</p><p>u.</p>
+              </div>
+            </div>
+            <div class="result-appendix">
+              <table>
+                <tr class="group">
+                  <td colspan="4">Unbalances</td>
+                </tr>
+                <tr class="title">
+                  <td>#</td>
+                  <td>Pos.</td>
+                  <td>Unb.</td>
+                  <td>Phase</td>
+                </tr>
+                <tr *ngFor="let phase of result.phases; let k=index" class="data">
+                  <td>{{k+1}}</td>
+                  <td>{{+phase.position}} {{_units.length.symbol}}</td>
+                  <td>{{+phase.unbalance}} {{_units.unbalance.symbol}}</td>
+                  <td>{{+phase.phase}} {{_units.degrees.symbol}}</td>
+                </tr>
+              </table>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+<dyn-modal (onCancel)="onCancel()"></dyn-modal>
+
+<ng-template #loading>
+  <spinner></spinner>
+</ng-template>

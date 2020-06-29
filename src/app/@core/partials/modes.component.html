@@ -1,0 +1,26 @@
+<h2 class="title">Modes</h2>
+<div class="result-form" [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.maxFrequency.invalid && data.controls.maxFrequency.dirty}">
+            <!--maxFrequency-->
+            <label for="maxFrequency">Max Spin <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="maxFrequency" placeholder="Max Spin Speed" formControlName="maxFrequency">
+            <p class="unit">(rpm)</p>
+            <show-errors [control]="data.controls.maxFrequency"></show-errors>
+        </div>
+
+        <div class="col-sm-4" [ngClass]="{'has-danger': data.controls.modes.invalid && data.controls.modes.dirty}">
+            <!--modes-->
+            <label for="modes">Number of Modes <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="modes" placeholder="Number of Modes" formControlName="modes">
+            <p class="unit">(u.)</p>
+            <show-errors [control]="data.controls.modes"></show-errors>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-info" [disabled]="!data.valid" (click)="close()">Save</button>
+        </div>
+    </div>
+</div>

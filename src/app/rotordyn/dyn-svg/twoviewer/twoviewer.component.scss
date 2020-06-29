@@ -1,0 +1,211 @@
+@import '../../../@theme/styles/themes';
+@import '~@nebular/theme/components/card/card.component.theme';
+
+@include nb-install-component() {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  .header {
+    @include nb-card-header();
+    font-weight: bold;
+    color: nb-theme(color-white);
+    border-bottom: 1px solid nb-theme(color-white);
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+  }
+
+  svg {
+    width: 100%;
+  }
+
+  .stroke-pattern {
+    fill: none;
+    stroke: #bdc4cd;
+    stroke-miterlimit: 10;
+    opacity: 0.1;
+    stroke-width: 1px;
+  }
+
+  .stroked-element {
+    stroke-width: 1px;
+    stroke: #bdc4cd;
+    stroke-miterlimit: 10;
+    fill: url('#New_Pattern_Swatch_1');
+  }
+
+  .element-border {
+    stroke-width: 1px;
+    stroke: #bdc4cd;
+    stroke-miterlimit: 10;
+    fill: none;
+    z-index: 40;
+  }
+
+  .element-bg {
+    fill: nb-theme(card-bg);
+    stroke: transparent;
+    cursor: pointer;
+    stroke-width: 1px;
+  }
+
+  .element-bg-border-grad {
+    fill: none;
+    stroke: none;
+    stroke-width: 1px;
+  }
+
+  .element-text {
+    cursor: pointer;
+    user-select: none;
+    pointer-events: none;
+    fill: nb-theme(color-fg);
+  }
+
+  /*sections green*/
+  .sections {
+    .element-border {
+      stroke: #161F24;
+    }
+    .element-bg {
+      /*fill: rgba(71, 78, 83, 1);*/
+      fill: url(#gradient-vertical) gray;
+    }
+  }
+
+  /*ribs yellow*/
+  .ribs {
+    .element-border {
+      stroke: #5a2f01;
+    }
+    .element-bg {
+      fill: rgba(134, 91, 0, 0.9);
+    }
+  }
+
+  /*disc green*/
+  .discs {
+    .element-border {
+      stroke: #006336;
+    }
+    .element-bg {
+      fill: rgba(0, 99, 54, 0.85);
+    }
+  }
+
+  /*inertia cyan*/
+  .inertias {
+    .element-border {
+      stroke: #8D921B;
+    }
+    .element-bg {
+      fill: rgba(141, 146, 27, 0.8);
+    }
+  }
+
+  /*roller red*/
+  .rollerbearings {
+    .element-border {
+      stroke: #4B1662;
+      z-index: 1000;
+    }
+    .element-bg {
+      fill: rgba(75, 22, 98, 0.8);
+    }
+  }
+
+  /*journal orange*/
+  .journalbearings {
+    .element-border {
+      stroke: #C46629;
+    }
+    .element-bg {
+      fill: rgba(196, 102, 41, 0.8);
+    }
+  }
+
+  /*foundation maroon*/
+  .foundations {
+    .element-border {
+      stroke: #E95753;
+    }
+    .element-bg {
+      fill: rgba(233, 87, 83, 0.8);
+    }
+  }
+
+  /*ves purple*/
+  .ves {
+    .element-border {
+      stroke: #074E4E;
+    }
+    .element-bg {
+      fill: rgba(7, 78, 78, 0.8);
+    }
+  }
+
+  /*abs pink*/
+  .abs {
+    .element-border {
+      stroke: #6F409D;
+    }
+    .element-bg {
+      fill: rgba(111, 64, 157, 0.8);
+    }
+  }
+
+  /*constant*/
+  .constant {
+    .element-border {
+      stroke: pink;
+    }
+    .element-bg {
+      fill: pink;
+    }
+  }
+  /*unbalance*/
+  .unbalance {
+    .element-border {
+      stroke: orange;
+    }
+    .element-bg {
+      fill: orange;
+    }
+  }
+  /*torsional*/
+  .torsional {
+    .element-border {
+      stroke: aqua;
+    }
+    .element-bg {
+      fill: aqua;
+    }
+  }
+
+  .line {
+    stroke: #a1a1e5;
+    stroke-width: 1px;
+  }
+  .tick {
+    stroke: #00f9a6;
+    stroke-width: 1px;
+  }
+
+  .selected-element {
+
+    .element-text {
+      fill: nb-theme(color-fg-heading);
+      font-weight: nb-theme(font-weight-bolder);
+    }
+    .element-border {
+      z-index: 1000;
+      stroke: nb-theme(color-success);
+    }
+  }
+}

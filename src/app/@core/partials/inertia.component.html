@@ -1,0 +1,44 @@
+<h2 class="title">Inertia</h2>
+<div [formGroup]="data">
+    <div class="row">
+        <div class="col-sm-12">
+            <!--position-->
+            <label for="position" [innerHTML]="'Position ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="position" placeholder="Position" formControlName="position" autofocus>
+            <show-errors [control]="data.controls.position"></show-errors>
+        </div>
+        <div class="col-sm-12">
+            <!--length-->
+            <label for="length" [innerHTML]="'Length ('+_units.length.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="length" placeholder="Inertia length" formControlName="length">
+            <show-errors [control]="data.controls.length"></show-errors>
+        </div>
+        <div class="col-sm-12">
+            <!--mass-->
+            <label for="mass" [innerHTML]="'Mass ('+_units.mass.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="mass" placeholder="Mass" formControlName="mass">
+            <show-errors [control]="data.controls.mass"></show-errors>
+        </div>
+        <div class="col-sm-12">
+            <!--ix-->
+            <label for="ix" [innerHTML]="'IX ('+_units.inertia.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="ix" placeholder="IX" formControlName="ix">
+            <show-errors [control]="data.controls.ix"></show-errors>
+        </div>
+        <div class="col-sm-12">
+            <!--iy-->
+            <label for="iy" [innerHTML]="'IY ('+_units.inertia.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="iy" placeholder="IY" formControlName="iy">
+            <show-errors [control]="data.controls.iy"></show-errors>
+        </div>
+        <div class="col-sm-12">
+            <!--iz-->
+            <label for="iz" [innerHTML]="'IZ ('+_units.inertia.symbol+')'"> <span class="required">*</span></label>
+            <input type="number" step="any" class="form-control" id="iz" placeholder="IZ" formControlName="iz">
+            <show-errors [control]="data.controls.iz"></show-errors>
+        </div>
+        <div class="col-sm-12">
+            <button type="submit" class="btn" [disabled]="!data.valid" (click)="close()">Save</button>
+        </div>
+    </div>
+</div>
