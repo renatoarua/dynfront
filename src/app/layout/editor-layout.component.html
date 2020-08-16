@@ -4,7 +4,7 @@
 
   <div class="toolbar">
 	<nb-card class="inverted">
-		<nb-card-header>Toolbar</nb-card-header>
+		<nb-card-header class="toolbar">Toolbar</nb-card-header>
 		<nb-card-body>
 			<dyn-node [model]="selected" [editing]="isEditing" (duplicate)="duplicateNode($event)" (delete)="deleteNode($event)" (edit)="editNode($event)" (split)="splitSection($event)" (join)="joinSection($event)"></dyn-node>
 			<dyn-toolbar [formModel]="formModel" [payload]="payload" (onModal)="openModal($event)" (onChange)="updateMachine($event)"></dyn-toolbar>

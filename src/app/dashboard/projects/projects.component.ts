@@ -105,7 +105,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this._projectService.saveProject(item);
     this.resetProject();
   }
+
   deleteProject(item: Project) {
+    debugger
     this._projectService.deleteProject(item);
   }
 

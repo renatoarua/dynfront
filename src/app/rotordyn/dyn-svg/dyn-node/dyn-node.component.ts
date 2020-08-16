@@ -14,6 +14,7 @@ export class DynNodeComponent implements OnDestroy {
   public node: UIElement;
   isSection: boolean = false;
   isRibs: boolean = false;
+  isBearings: boolean = false;
 
   splits = 2;
   joinprev: boolean = false;
@@ -29,6 +30,7 @@ export class DynNodeComponent implements OnDestroy {
 
     this.isSection = (this.node.group == 'sections') ? true : false;
     this.isRibs = (this.node.group == 'ribs') ? true : false;
+    this.isBearings = (this.node.group == 'journalbearings' || this.node.group == 'rollerbearings') ? true : false;
 
     console.log(this.node.group);
     console.log(this.node);

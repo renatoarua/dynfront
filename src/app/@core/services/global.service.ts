@@ -16,7 +16,7 @@ export class GlobalService{
     if(environment.production == true) {
       this.apiHost = 'http://api.dyntechnologies.net/v1';
     } else {
-      this.apiHost = 'http://api.dyntech.local/v1';
+      this.apiHost = 'http://127.0.0.1:8000/v1';
       // this.apiHost = 'http://api.dyntechnologies.net/v1';
     }
   }

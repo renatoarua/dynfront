@@ -34,6 +34,7 @@ export class UnbalanceComponent implements ModalComponent {
   }
 
   addResponse() {
+    debugger
     const control = <FormArray>this.data.controls['responses'];
     control.push(this.initResponse());
   }

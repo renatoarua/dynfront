@@ -42,7 +42,6 @@
                   <span>Response Point {{i + 1}}</span>
                   <span (click)="removeResponse(i)"> <i class="fa fa-times"></i></span>
                 </div>
-
                 <div class="panel-body" [formGroupName]="i">
                     <result-response [data]="data.controls['responses'].controls[i]"></result-response>
                 </div>

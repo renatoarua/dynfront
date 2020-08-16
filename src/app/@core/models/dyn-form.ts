@@ -416,12 +416,12 @@ export class DynForm {
     group.controls['mass'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
     group.controls['inertia'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
     group.controls['kxx'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
-    group.controls['kxz'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
-    group.controls['kzx'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
+    group.controls['kxz'].setValidators([Validators.required]);
+    group.controls['kzx'].setValidators([Validators.required]);
     group.controls['kzz'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
     group.controls['cxx'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
-    group.controls['cxz'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
-    group.controls['czx'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
+    group.controls['cxz'].setValidators([Validators.required]);
+    group.controls['czx'].setValidators([Validators.required]);
     group.controls['czz'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
     group.controls['ktt'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
     group.controls['ktp'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);

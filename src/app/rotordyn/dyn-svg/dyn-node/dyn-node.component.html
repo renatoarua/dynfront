@@ -29,11 +29,11 @@
         <span class="parameter-name">pos</span>
         <span class="parameter-value">{{position.toFixed(2)}}</span>
       </div>
-      <div class="parameter">
+      <div class="parameter" *ngIf="!isBearings">
         <span class="parameter-name">len/thic</span>
         <span class="parameter-value">{{length.toFixed(2)}}</span>
       </div>
-      <div class="parameter">
+      <div class="parameter" *ngIf="!isBearings">
         <span class="parameter-name">diam</span>
         <span class="parameter-value">{{diameter.toFixed(2)}}</span>
       </div>

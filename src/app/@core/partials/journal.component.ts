@@ -72,12 +72,12 @@ export class JournalComponent implements ModalComponent, OnInit {
 
     group.controls['speed'].setValidators([Validators.required, CustomValidators.ValidatePositive(false)]);
     group.controls['kxx'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
-    group.controls['kxz'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
-    group.controls['kzx'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
+    group.controls['kxz'].setValidators([Validators.required]);
+    group.controls['kzx'].setValidators([Validators.required]);
     group.controls['kzz'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
     group.controls['cxx'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
-    group.controls['cxz'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
-    group.controls['czx'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
+    group.controls['cxz'].setValidators([Validators.required]);
+    group.controls['czx'].setValidators([Validators.required]);
     group.controls['czz'].setValidators([Validators.required, CustomValidators.ValidatePositive()]);
     return group;
   }
